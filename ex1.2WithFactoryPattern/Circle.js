@@ -1,29 +1,26 @@
-const Circle = function (center, radius) {
-  const circle = {
-    center,
-    radius,
-  };
+import Point from "./Point.js";
 
-  circle.getCenter = function () {
-    return this.center;
-  };
+const Circle = function (center, radius, x = null, y = null) {
+  const circle = {};
+  if (center) {
+    circle.center = center;
+    circle.radius = radius;
+  } else {
+    circle.center = new Point(x, y);
+    circle.radius = radius;
+  }
 
-  circle.getRadius = function () {
-    return this.radius;
-  };
+  circle.getCenter = () => circle.center;
 
-  circle.moveTo = function (x, y) {
-    this.center.moveTo(x, y);
-  };
+  circle.getRadius = () => circle.radius;
 
-  circle.toString = function () {
-    return (
-      "center is at: " +
-      this.center.toString() +
-      " with a radius of: " +
-      this.radius
-    );
-  };
+  circle.moveTo = (x, y) => circle.center.moveTo(x, y);
+
+  circle.toString = () =>
+    "center is at: " +
+    circle.center.toString() +
+    " with a radius of: " +
+    circle.radius;
 
   return circle;
 };

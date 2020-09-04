@@ -3,22 +3,19 @@ const Point = function (x, y) {
     x,
     y,
   };
-  point.getX = function () {
-    return x;
+  point.getX = () => x;
+
+  point.getY = () => y;
+
+  point.moveTo = (x, y) => {
+    point.x = x;
+    point.y = y;
   };
-  point.getY = function () {
-    return y;
-  };
-  point.moveTo = function (x, y) {
-    this.x = x;
-    this.y = y;
-  };
-  point.toString = function () {
-    return "x is: " + this.x + ", y is: " + this.y;
-  };
-  point.copy = function () {
-    return this;
-  };
+
+  point.toString = () => "x is: " + point.x + ", y is: " + point.y;
+
+  point.copy = () => point;
+
   return point;
 };
 

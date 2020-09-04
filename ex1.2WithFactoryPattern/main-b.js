@@ -13,4 +13,5 @@ let circles = [circle1, circle2, circle3];
 
 let radiuses = circles.map((x) => x.radius);
 
+console.log(circles.map(x => x.toString()));
 console.log(radiuses);
