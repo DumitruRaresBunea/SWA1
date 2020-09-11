@@ -1,6 +1,6 @@
 import Point from "./Point.js";
 
-const Circle = function (center, radius, x = null, y = null) {
+const Circle =  (center, radius, x = null, y = null) =>{
   const circle = {};
   if (center) {
     circle.center = center;

@@ -1,4 +1,4 @@
-const Point = function (x, y) {
+const Point =  (x, y) => {
   const point = {
     x,
     y,
