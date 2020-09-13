@@ -1,19 +1,17 @@
-export const DataType = (type, unit) => {
+export const DataType = (options) => {
   const dataType = {
-    type,
-    unit,
+    type: options.type,
+    unit: options.unit,
   };
 
-  dataType.getType = () => type;
-  dataType.getUnit = () => unit;
+  dataType.getType = () => dataType.type;
+  dataType.getUnit = () => dataType.unit;
 
   return dataType;
 };
 
 // Verification
 
-// dateType1 = DataType("Length", "cm");
-// dateType2 = DataType("Temperature", "degrees celsius");
+// let dateType1 = DataType({type:"Length", unit:"cm"});
 
 // console.log(dateType1.getType() + " " + dateType1.getUnit());
-// console.log(dateType2.getType() + " " + dateType2.getUnit());

@@ -1,11 +1,11 @@
-export const Event = (time, place) => {
+export const Event = (options) => {
   const event = {
-    time,
-    place,
+    time: options.time,
+    place: options.place,
   };
 
-  event.getTime = () => time;
-  event.getPlace = () => place;
+  event.getTime = () => event.time;
+  event.getPlace = () => event.place;
 
   return event;
 };
@@ -14,7 +14,7 @@ export const Event = (time, place) => {
 
 // let date = new Date(2016, 2, 3);
 
-// let event = Event(date, "this place");
+// let event = Event({ time: date, place: "this place" });
 
 // console.log(event.getTime());
 // console.log(event.getPlace());

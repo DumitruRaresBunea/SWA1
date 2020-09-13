@@ -1,25 +1,26 @@
-export const DateInterval = (startDate, endDate) => {
+export const DateInterval = (options) => {
   const dateInterval = {
-    startDate,
-    endDate,
+    startDate: options.startDate,
+    endDate: options.endDate,
   };
 
-  dateInterval.from = () => startDate;
-  dateInterval.to = () => endDate;
+  dateInterval.from = () => dateInterval.startDate;
+  dateInterval.to = () => dateInterval.endDate;
 
-  dateInterval.contains = (date) => date > startDate && date < endDate;
+  dateInterval.contains = (date) =>
+    date > dateInterval.startDate && date < dateInterval.endDate;
 
   return dateInterval;
 };
 
 //Verification
 
-// startdate1 = new Date(2014, 2, 3);
-// startdate2 = new Date(2015, 4, 6);
-// enddate1 = new Date(2020, 4, 8);
-// enddate2 = new Date(2020, 1, 8);
-// date1 = new Date(2016, 2, 3);
-// date2 = new Date(2021, 2, 3);
+// let startdate1 = new Date(2014, 2, 3);
+// let startdate2 = new Date(2015, 4, 6);
+// let enddate1 = new Date(2020, 4, 8);
+// let enddate2 = new Date(2020, 1, 8);
+// let date1 = new Date(2016, 2, 3);
+// let date2 = new Date(2021, 2, 3);
 
 // console.log(startdate1);
 // console.log(startdate2);
@@ -28,14 +29,14 @@ export const DateInterval = (startDate, endDate) => {
 // console.log(date1);
 // console.log(date2);
 
-// dateInterval1 = DateInterval(startdate1, enddate1)
-// dateInterval2 = DateInterval(startdate2, enddate2)
+// let dateInterval1 = DateInterval({ startDate: startdate1, endDate: enddate1 });
+// let dateInterval2 = DateInterval({ startDate: startdate2, endDate: enddate2 });
 
-// console.log(dateInterval1)
-// console.log(dateInterval2)
+// console.log(dateInterval1);
+// console.log(dateInterval2);
 
-// console.log(dateInterval1.contains(date1))
-// console.log(dateInterval1.contains(date2))
+// console.log(dateInterval1.contains(date1));
+// console.log(dateInterval1.contains(date2));
 
-// console.log(dateInterval2.contains(date1))
-// console.log(dateInterval2.contains(date2))
+// console.log(dateInterval2.contains(date1));
+// console.log(dateInterval2.contains(date2));
