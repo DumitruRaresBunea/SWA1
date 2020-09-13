@@ -11,6 +11,7 @@ const WeatherData = (options) => {
   return { ...weatherData, ...Event(options), ...DataType(options) };
 };
 
+export default WeatherData;
 // Verification
 
 // let weatherData1 = WeatherData({
