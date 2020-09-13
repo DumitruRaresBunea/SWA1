@@ -1,4 +1,4 @@
-export const DataType = (options) => {
+const DataType = (options) => {
   const dataType = {
     type: options.type,
     unit: options.unit,
@@ -9,6 +9,8 @@ export const DataType = (options) => {
 
   return dataType;
 };
+
+export default DataType;
 
 // Verification
 

@@ -1,4 +1,4 @@
-export const DateInterval = (options) => {
+const DateInterval = (options) => {
   const dateInterval = {
     startDate: options.startDate,
     endDate: options.endDate,
@@ -12,6 +12,7 @@ export const DateInterval = (options) => {
 
   return dateInterval;
 };
+export default DateInterval;
 
 //Verification
 

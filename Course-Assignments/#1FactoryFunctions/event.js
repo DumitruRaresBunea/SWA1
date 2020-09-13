@@ -1,4 +1,4 @@
-export const Event = (options) => {
+const Event = (options) => {
   const event = {
     time: options.time,
     place: options.place,
@@ -9,6 +9,7 @@ export const Event = (options) => {
 
   return event;
 };
+export default Event;
 
 // Verification
 
