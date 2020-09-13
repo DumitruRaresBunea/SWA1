@@ -12,6 +12,8 @@ const DateInterval = (startDate, endDate) => {
   return dateInterval;
 };
 
+// Verification
+
 // startdate1 = new Date(2014, 2, 3);
 // startdate2 = new Date(2015, 4, 6);
 // enddate1 = new Date(2020, 4, 8);
