@@ -1,4 +1,4 @@
-const DateInterval = (startDate, endDate) => {
+export const DateInterval = (startDate, endDate) => {
   const dateInterval = {
     startDate,
     endDate,
@@ -12,7 +12,7 @@ const DateInterval = (startDate, endDate) => {
   return dateInterval;
 };
 
-// Verification
+//Verification
 
 // startdate1 = new Date(2014, 2, 3);
 // startdate2 = new Date(2015, 4, 6);
@@ -39,7 +39,3 @@ const DateInterval = (startDate, endDate) => {
 
 // console.log(dateInterval2.contains(date1))
 // console.log(dateInterval2.contains(date2))
-
-
-
-
