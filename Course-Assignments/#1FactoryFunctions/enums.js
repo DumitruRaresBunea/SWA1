@@ -34,3 +34,10 @@ export const CardinalDirections = {
   SE: "SE",
   SV: "SV",
 };
+
+export const DataType = {
+  PRECIPITATION: 1,
+  TEMPERATURE: 2,
+  WIND: 3,
+  CLOUDCOVERAGE: 4,
+};

@@ -1,16 +1,21 @@
 const DateInterval = (options) => {
-  const dateInterval = {
-    startDate: options.startDate,
-    endDate: options.endDate,
-  };
+  // const getStartDate = () => options.startDate;
+  // const getEndDate = () => options.endDate;
 
-  dateInterval.from = () => dateInterval.startDate;
-  dateInterval.to = () => dateInterval.endDate;
+  const setStartDate = (newStartDate) => (options.startDate = newStartDate);
+  const setEndDate = (newEndDate) => (options.endDate = newEndDate);
+
+  const clearCurrentPeriod = () => {
+    options.startDate = undefined;
+    options.endDate = undefined;
+  };
+  const from = () => dateInterval.startDate;
+  const to = () => dateInterval.endDate;
 
   dateInterval.contains = (date) =>
-    date > dateInterval.startDate && date < dateInterval.endDate;
+    date > options.startDate && date < options.endDate;
 
-  return dateInterval;
+  return { setStartDate, setEndDate, from, to, clearCurrentPeriod };
 };
 export default DateInterval;
 

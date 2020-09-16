@@ -38,6 +38,8 @@ const Wind = (options) => {
   };
 };
 
+export default Wind;
+
 // Verification
 // let wind = Wind({
 //   unit: SpeedUnits.MPH,
