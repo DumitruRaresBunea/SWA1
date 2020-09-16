@@ -6,9 +6,17 @@ const WeatherData = (options) => {
     value: options.value,
   };
 
-  weatherData.getValue = () => weatherData.valuel;
+  const getValue = () => weatherData.value;
 
-  return { ...weatherData, ...Event(options), ...DataType(options) };
+  const setValue = (newValue) => (weatherData.value = newValue);
+
+  return {
+    ...weatherData,
+    setValue,
+    getValue,
+    ...Event(options),
+    ...DataType(options),
+  };
 };
 
 export default WeatherData;

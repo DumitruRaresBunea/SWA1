@@ -5,6 +5,7 @@ const DataType = (options) => {
   };
 
   dataType.getType = () => dataType.type;
+
   dataType.getUnit = () => dataType.unit;
 
   return dataType;
