@@ -2,16 +2,11 @@ import Event from "./event.js";
 import DataType from "./data-type.js";
 
 const WeatherData = (options) => {
-  const weatherData = {
-    value: options.value,
-  };
+  const getValue = () => options.value;
 
-  const getValue = () => weatherData.value;
-
-  const setValue = (newValue) => (weatherData.value = newValue);
+  const setValue = (newValue) => (options.value = newValue);
 
   return {
-    ...weatherData,
     setValue,
     getValue,
     ...Event(options),
@@ -30,9 +25,23 @@ export default WeatherData;
 //   unit: "kmh",
 // });
 
-// console.log(weatherData1);
 // console.log(weatherData1.getValue());
 // console.log(weatherData1.getTime());
 // console.log(weatherData1.getPlace());
 // console.log(weatherData1.getType());
 // console.log(weatherData1.getUnit());
+
+// weatherData1.setTime(new Date(2011, 3, 5));
+// weatherData1.setPlace("another place");
+
+// weatherData1.setType("length");
+// weatherData1.setUnit("cm");
+
+// weatherData1.setValue(3);
+// console.log(weatherData1.getValue());
+// console.log(weatherData1.getTime());
+// console.log(weatherData1.getPlace());
+// console.log(weatherData1.getType());
+// console.log(weatherData1.getUnit());
+
+// console.log(weatherData1);

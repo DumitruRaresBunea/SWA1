@@ -6,16 +6,24 @@ const FtoC = (farenheitT) => ((farenheitT - 32) * 5) / 9;
 
 const Temperature = (options) => {
   const convertToF = () => {
-    if (options.unit !== TemperatureUnits.FAHRENHEIT) {
+    if (options.unit === TemperatureUnits.CELSIUS) {
       options.unit = TemperatureUnits.FAHRENHEIT;
-      setUnit(TemperatureUnits.FAHRENHEIT);
       options.value = CtoF(options.value);
+    } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
+      console.log("Already in FAHRENHEIT");
+    } else {
+      console.log("Not a supported temperature unit");
     }
   };
+
   const convertToC = () => {
-    if (options.unit !== TemperatureUnits.CELSIUS) {
+    if (options.unit === TemperatureUnits.FAHRENHEIT) {
       options.unit = TemperatureUnits.CELSIUS;
       options.value = FtoC(options.value);
+    } else if (options.unit === TemperatureUnits.CELSIUS) {
+      console.log("Already in CELSIUS");
+    } else {
+      console.log("Not a supported temperature unit");
     }
   };
 
@@ -25,12 +33,16 @@ const Temperature = (options) => {
 export default Temperature;
 
 // Verification
-let temp = Temperature({ unit: TemperatureUnits.CELSIUS, value: 0 });
-console.log(temp);
-temp.setUnit(temp.convertToC());
-console.log(temp.unit + " " + temp.value);
-console.log(temp);
-temp.setUnit(temp.convertToF());
+// let temp = Temperature({
+//   unit: TemperatureUnits.CELSIUS,
+//   value: 0,
+//   time: new Date(2022, 12, 23),
+//   place: "Aarhus",
+//   type: "speed",
+// });
+// debugger;
+// temp.convertToC();
+// console.log(temp.getUnit() + " " + temp.getValue());
+// temp.convertToF();
 
-console.log(temp.unit + " " + temp.value);
-console.log(temp);
+// console.log(temp.getUnit() + " " + temp.getValue());

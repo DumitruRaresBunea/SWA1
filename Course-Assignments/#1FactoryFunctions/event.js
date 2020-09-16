@@ -1,13 +1,11 @@
 const Event = (options) => {
-  const event = {
-    time: options.time,
-    place: options.place,
-  };
+  const getTime = () => options.time;
+  const getPlace = () => options.place;
 
-  event.getTime = () => event.time;
-  event.getPlace = () => event.place;
+  const setTime = (newTime) => (options.time = newTime);
+  const setPlace = (newPlace) => (options.place = newPlace);
 
-  return event;
+  return { getTime, getPlace, setTime, setPlace };
 };
 export default Event;
 
@@ -16,6 +14,12 @@ export default Event;
 // let date = new Date(2016, 2, 3);
 
 // let event = Event({ time: date, place: "this place" });
+
+// console.log(event.getTime());
+// console.log(event.getPlace());
+
+// event.setTime(new Date(2011, 3, 5));
+// event.setPlace("another place");
 
 // console.log(event.getTime());
 // console.log(event.getPlace());
