@@ -1,6 +1,9 @@
 import { LengthUnits, PrecipitationTypes } from "./enums.js";
 import WeatherData from "./weather-data.js";
 
+const mmToInch = (value) => value / 25.5;
+const inchToMm = (value) => value * 25.5;
+
 const Precipitation = (options) => {
   const getPrecipitaionType = () => options.precipitationType;
 
@@ -10,7 +13,7 @@ const Precipitation = (options) => {
   const convertToInches = () => {
     if (options.unit === LengthUnits.MM) {
       options.unit = LengthUnits.INCHES;
-      options.value = options.value / 25.4;
+      options.value = mmToInch(options.value);
     } else if (options.unit === LengthUnits.INCHES) {
       console.log("Already in INCHES");
     } else {
@@ -21,7 +24,7 @@ const Precipitation = (options) => {
   const convertToMM = () => {
     if (options.unit === LengthUnits.INCHES) {
       options.unit = LengthUnits.MM;
-      options.value = options.value * 25.4;
+      options.value = inchToMm(options.value);
     } else if (options.unit === LengthUnits.MM) {
       console.log("Already in MM");
     } else {

@@ -18,3 +18,19 @@ export const PrecipitationTypes = {
   SNOW: "Snow",
   HAIL: "Hail",
 };
+
+export const SpeedUnits = {
+  MPH: "mph",
+  MS: "ms",
+};
+
+export const CardinalDirections = {
+  N: "N",
+  S: "S",
+  E: "E",
+  V: "V",
+  NE: "NE",
+  NV: "NV",
+  SE: "SE",
+  SV: "SV",
+};
