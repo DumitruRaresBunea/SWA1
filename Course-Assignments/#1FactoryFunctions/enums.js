@@ -36,8 +36,8 @@ export const CardinalDirections = {
 };
 
 export const DataType = {
-  PRECIPITATION: 1,
-  TEMPERATURE: 2,
-  WIND: 3,
-  CLOUDCOVERAGE: 4,
+  PRECIPITATION: "PRECIPITATION",
+  TEMPERATURE: "TEMPERATURE",
+  WIND: "WIND",
+  CLOUDCOVERAGE: "CLOUDCOVERAGE",
 };

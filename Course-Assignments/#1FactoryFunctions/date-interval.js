@@ -9,13 +9,12 @@ const DateInterval = (options) => {
     options.startDate = undefined;
     options.endDate = undefined;
   };
-  const from = () => dateInterval.startDate;
-  const to = () => dateInterval.endDate;
+  const from = () => options.startDate && options.startDate;
+  const to = () => options.endDate && options.endDate;
 
-  dateInterval.contains = (date) =>
-    date > options.startDate && date < options.endDate;
+  const contains = (date) => date > options.startDate && date < options.endDate;
 
-  return { setStartDate, setEndDate, from, to, clearCurrentPeriod };
+  return { contains, setStartDate, setEndDate, from, to, clearCurrentPeriod };
 };
 export default DateInterval;
 
