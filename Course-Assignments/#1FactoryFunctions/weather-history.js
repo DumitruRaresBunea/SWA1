@@ -34,6 +34,7 @@ const WeatherHistory = (options) => {
   const clearCurrentDateInterval = () => (options.dateInterval = undefined);
 
   const convertToUsUnits = () => {
+    console.log("\u001b[1;33m Converting to US units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -49,9 +50,11 @@ const WeatherHistory = (options) => {
           break;
       }
     });
+    console.log("\u001b[1;33m Converted to US units");
   };
 
   const convertToInternationalUnits = () => {
+    console.log("\u001b[1;33m Converting to INTERNATIONAL units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -67,6 +70,7 @@ const WeatherHistory = (options) => {
           break;
       }
     });
+    console.log("\u001b[1;33m Converted to INTERNATIONAL units");
   };
 
   const typeCondition = (x) =>
@@ -94,33 +98,37 @@ const WeatherHistory = (options) => {
   const allData = () => options.data;
 
   const printData = (dataArrray) => {
-    let historyTitle = "\u001b[1;36m Weather history";
+    let historyTitle = "\u001b[1;36m \n Weather history:";
     let placeString =
-      getCurrentPlace() !== undefined ? " in: " + getCurrentPlace() : "";
+      getCurrentPlace() !== undefined ? " \n - in: " + getCurrentPlace() : "";
     let typeString =
-      getCurrentType() !== undefined ? " for: " + getCurrentType() : "";
+      getCurrentType() !== undefined ? " \n - for: " + getCurrentType() : "";
     let dateString =
       getCurrentDateInterval() !== undefined
-        ? " from: " +
+        ? " \n - from: " +
           getCurrentDateInterval().from() +
-          " to: " +
+          " \n - to: " +
           getCurrentDateInterval().to()
         : "";
 
     console.log(historyTitle + placeString + typeString + dateString);
-    dataArrray.map((x) =>
+    let placeDetailsString = "";
+    let typeDetailsString = "";
+
+    dataArrray.map((x) => {
+      placeDetailsString = getCurrentPlace() === undefined ? x.getPlace() : "";
+      typeDetailsString = getCurrentType() === undefined ? x.getType() : "";
       console.log(
         "\u001b[1;32m " +
-          x.getPlace() +
+          placeDetailsString +
           " " +
-          x.getType() +
+          typeDetailsString +
           " " +
           x.getUnit() +
           " " +
-          x.getValue(),
-        "\n"
-      )
-    );
+          x.getValue()
+      );
+    });
   };
 
   return {
@@ -246,3 +254,4 @@ wh.clearCurrentDateInterval();
 wh.printData(wh.data());
 wh.convertToUsUnits();
 wh.printData(wh.data());
+wh.convertToUsUnits();

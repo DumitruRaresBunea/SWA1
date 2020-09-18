@@ -15,9 +15,9 @@ const Precipitation = (options) => {
       options.unit = LengthUnits.INCHES;
       options.value = mmToInch(options.value);
     } else if (options.unit === LengthUnits.INCHES) {
-      console.log("Already in INCHES");
+      console.log("\u001b[1;31m Already in INCHES");
     } else {
-      console.log("Not a supported length unit");
+      console.log("\u001b[1;31m Not a supported length unit");
     }
   };
 
@@ -26,9 +26,9 @@ const Precipitation = (options) => {
       options.unit = LengthUnits.MM;
       options.value = inchToMm(options.value);
     } else if (options.unit === LengthUnits.MM) {
-      console.log("Already in MM");
+      console.log("\u001b[1;31m Already in MM");
     } else {
-      console.log("Not a supported length unit");
+      console.log("\u001b[1;31m Not a supported length unit");
     }
   };
 

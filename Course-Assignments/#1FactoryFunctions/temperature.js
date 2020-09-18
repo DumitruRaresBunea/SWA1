@@ -10,9 +10,9 @@ const Temperature = (options) => {
       options.unit = TemperatureUnits.FAHRENHEIT;
       options.value = CtoF(options.value);
     } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
-      console.log("Already in FAHRENHEIT");
+      console.log("\u001b[1;31m Already in FAHRENHEIT");
     } else {
-      console.log("Not a supported temperature unit");
+      console.log("\u001b[1;31m Not a supported temperature unit");
     }
   };
 
@@ -21,9 +21,9 @@ const Temperature = (options) => {
       options.unit = TemperatureUnits.CELSIUS;
       options.value = FtoC(options.value);
     } else if (options.unit === TemperatureUnits.CELSIUS) {
-      console.log("Already in CELSIUS");
+      console.log("\u001b[1;31m Already in CELSIUS");
     } else {
-      console.log("Not a supported temperature unit");
+      console.log("\u001b[1;31m Not a supported temperature unit");
     }
   };
 
