@@ -11,8 +11,9 @@ import {
   SpeedUnits,
   DataType,
 } from "./enums.js";
+import WeatherPrediction from "./weather-prediction.js";
 
-const WeatherForecast = (options) => {
+const WeatherForecast = (options) => { 
   const getCurrentPlace = () => options.place;
 
   const setCurrentPlace = (newCurrentPlace) =>

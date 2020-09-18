@@ -49,7 +49,7 @@ const PrecipitationPrediction = (options) => {
     setPrecipitationType,
     convertToInches,
     convertToMM,
-    ...WeatherData(options),
+    // ...WeatherData(options),
     ...WeatherPrediction(options)
   };
 };

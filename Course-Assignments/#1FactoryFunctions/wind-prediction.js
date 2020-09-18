@@ -42,7 +42,7 @@ const WindPrediction = (options) => {
     setDirection,
     convertToMPH,
     convertToMS,
-    ...WeatherData(options),
+    // ...WeatherData(options),
     ...WeatherPrediction(options)
   };
 };
