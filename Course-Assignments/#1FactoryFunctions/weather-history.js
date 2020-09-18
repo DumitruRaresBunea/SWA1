@@ -36,7 +36,7 @@ const WeatherHistory = (options) => {
   const clearCurrentDateInterval = () => (options.dateInterval = undefined);
 
   const convertToUsUnits = () => {
-    styledLog(Colors.YELLOW, "Converting to US units");
+    styledLog(Colors.YELLOW, "\nConverting to US units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -56,7 +56,7 @@ const WeatherHistory = (options) => {
   };
 
   const convertToInternationalUnits = () => {
-    styledLog(Colors.YELLOW, "Converting to INTERNATIONAL units");
+    styledLog(Colors.YELLOW, "\nConverting to INTERNATIONAL units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -246,7 +246,6 @@ wh.add(wind);
 
 // wh.convertToInternationalUnits();
 // console.log(wh.printData());
-debugger;
 // console.log(wh.data());
 wh.printData(wh.data());
 wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
@@ -260,3 +259,5 @@ wh.printData(wh.data());
 wh.convertToUsUnits();
 wh.printData(wh.data());
 wh.convertToUsUnits();
+wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
+wh.printData(wh.data());

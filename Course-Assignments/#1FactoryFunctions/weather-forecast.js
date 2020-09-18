@@ -37,7 +37,7 @@ const WeatherForecast = (options) => {
   const clearCurrentDateInterval = () => (options.dateInterval = undefined);
 
   const convertToUsUnits = () => {
-    styledLog(Colors.YELLOW, "Converting to US units");
+    styledLog(Colors.YELLOW, "'nConverting to US units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -57,7 +57,7 @@ const WeatherForecast = (options) => {
   };
 
   const convertToInternationalUnits = () => {
-    styledLog(Colors.YELLOW, "Converting to INTERNATIONAL units");
+    styledLog(Colors.YELLOW, "\nConverting to INTERNATIONAL units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -120,13 +120,12 @@ const WeatherForecast = (options) => {
 
     let placeDetailsString = "";
     let typeDetailsString = "";
-
     dataArrray.map((x) => {
       placeDetailsString = getCurrentPlace() === undefined ? x.getPlace() : "";
       typeDetailsString = getCurrentType() === undefined ? x.getType() : "";
       styledLog(
-        Colors.GREEN +
-          placeDetailsString +
+        Colors.GREEN,
+        placeDetailsString +
           " " +
           typeDetailsString +
           " " +
@@ -172,16 +171,16 @@ let wh = WeatherForecast({
 
 let temp = TemperaturePrediction({
   unit: TemperatureUnits.CELSIUS,
-  fromValue: -1,
-  toValue: 2,
+  from: -1,
+  to: 2,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.TEMPERATURE,
 });
 let prec = PrecipitationPrediction({
   unit: LengthUnits.MM,
-  fromValue: -1,
-  toValue: 2,
+  from: -1,
+  to: 2,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.PRECIPITATION,
@@ -189,8 +188,8 @@ let prec = PrecipitationPrediction({
 });
 let wind = WindPrediction({
   unit: SpeedUnits.MPH,
-  fromValue: 10,
-  toValue: 20,
+  from: 10,
+  to: 20,
   time: new Date(2022, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.WIND,
@@ -198,8 +197,8 @@ let wind = WindPrediction({
 });
 let clouds = CloudCoveragePrediction({
   unit: "Percentage",
-  fromValue: -1,
-  toValue: 10,
+  from: -1,
+  to: 10,
   time: new Date(2022, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.CLOUDCOVERAGE,
@@ -209,15 +208,20 @@ wh.add(prec);
 wh.add(clouds);
 wh.add(wind);
 
-wh.printData(wh.data());
-wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
-wh.printData(wh.data());
+// wh.printData(wh.data());
+// wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
+// wh.printData(wh.data());
 wh.clearCurrentType();
-wh.printData(wh.data());
+// wh.printData(wh.data());
 wh.clearCurrentPlace();
-wh.printData(wh.data());
+// wh.printData(wh.data());
 wh.clearCurrentDateInterval();
+// wh.printData(wh.data());
+wh.convertToUsUnits();
+// wh.convertToUsUnits();
+wh.convertToInternationalUnits();
 wh.printData(wh.data());
 wh.convertToUsUnits();
 wh.printData(wh.data());
-wh.convertToUsUnits();
+wh.convertToInternationalUnits();
+wh.printData(wh.data());

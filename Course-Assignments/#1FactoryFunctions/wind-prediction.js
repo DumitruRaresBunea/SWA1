@@ -10,7 +10,8 @@ const WindPrediction = (options) => {
   const convertToMPH = () => {
     if (options.unit === SpeedUnits.MS) {
       options.unit = SpeedUnits.MPH;
-      options.value = msToMph(options.value);
+      options.to = msToMph(options.to);
+      options.from = msToMph(options.from);
     } else if (options.unit === SpeedUnits.MPH) {
       styledLog(Colors.RED, "Already in MPH");
     } else {
@@ -21,7 +22,8 @@ const WindPrediction = (options) => {
   const convertToMS = () => {
     if (options.unit === SpeedUnits.MPH) {
       options.unit = SpeedUnits.MS;
-      options.value = mphToMs(options.value);
+      options.to = mphToMs(options.to);
+      options.from = mphToMs(options.from);
     } else if (options.unit === SpeedUnits.MS) {
       styledLog(Colors.RED, "Already in MS");
     } else {

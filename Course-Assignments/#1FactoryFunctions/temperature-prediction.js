@@ -10,7 +10,8 @@ function TemperaturePrediction(options) {
   const convertToF = () => {
     if (options.unit === TemperatureUnits.CELSIUS) {
       options.unit = TemperatureUnits.FAHRENHEIT;
-      options.value = celsiusToFarenheit(options.value);
+      options.from = celsiusToFarenheit(options.from);
+      options.to = celsiusToFarenheit(options.to);
     } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
       styledLog(Colors.RED, "Already in FAHRENHEIT");
     } else {
@@ -21,7 +22,8 @@ function TemperaturePrediction(options) {
   const convertToC = () => {
     if (options.unit === TemperatureUnits.FAHRENHEIT) {
       options.unit = TemperatureUnits.CELSIUS;
-      options.value = farenheitToCelsius(options.value);
+      options.to = farenheitToCelsius(options.to);
+      options.from = farenheitToCelsius(options.from);
     } else if (options.unit === TemperatureUnits.CELSIUS) {
       styledLog(Colors.RED, "Already in CELSIUS");
     } else {

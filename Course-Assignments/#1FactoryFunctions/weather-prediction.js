@@ -17,13 +17,15 @@ import {
 import { styledLog } from "../helpers/colored-logs.helper.js";
 
 const WeatherPrediction = (options) => {
-  const fromValue = () => options.fromValue;
-  const toValue = () => options.toValue;
+  const fromValue = () => options.from;
+  const toValue = () => options.to;
+
   const matches = (weatherData) =>
-    options.fromValue <= weatherData.getValue() &&
-    options.toValue >= weatherData.getValue() &&
+    options.from <= weatherData.getValue() &&
+    options.to >= weatherData.getValue() &&
     options.type === weatherData.getType() &&
     options.unit === weatherData.getUnit();
+
   return {
     matches,
     fromValue,

@@ -12,7 +12,8 @@ const PrecipitationPrediction = (options) => {
   const convertToInches = () => {
     if (options.unit === LengthUnits.MM) {
       options.unit = LengthUnits.INCHES;
-      options.value = mmToInch(options.value);
+      options.from = mmToInch(options.from);
+      options.to = mmToInch(options.to);
     } else if (options.unit === LengthUnits.INCHES) {
       styledLog(Colors.RED, "Already in INCHES");
     } else {
@@ -23,7 +24,8 @@ const PrecipitationPrediction = (options) => {
   const convertToMM = () => {
     if (options.unit === LengthUnits.INCHES) {
       options.unit = LengthUnits.MM;
-      options.value = inchToMM(options.value);
+      options.from = inchToMM(options.from);
+      options.to = inchToMM(options.to);
     } else if (options.unit === LengthUnits.MM) {
       styledLog(Colors.RED, "Already in MM");
     } else {
