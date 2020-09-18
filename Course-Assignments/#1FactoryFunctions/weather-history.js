@@ -68,15 +68,62 @@ const WeatherHistory = (options) => {
       }
     });
   };
+
+  const typeCondition = (x) =>
+    getCurrentType() ? x.getType() === getCurrentType() : true;
+  const placeCondition = (x) =>
+    getCurrentPlace() ? x.getPlace() === getCurrentPlace() : true;
+  const dateCondition = (x) =>
+    getCurrentDateInterval()
+      ? getCurrentDateInterval().contains(x.getTime())
+      : true;
+
   const add = (weatherData) => options.data.push(weatherData);
+  const data = () => {
+    let returnArray = [];
+
+    options.data.map((x) => {
+      typeCondition(x) &&
+        placeCondition(x) &&
+        dateCondition(x) &&
+        returnArray.push(x);
+    });
+
+    return returnArray;
+  };
   const allData = () => options.data;
-  const printData = () =>
-    options.data.map(
-      (x) => x.getType() + " " + x.getUnit() + " " + x.getValue(),
-      "\n"
+
+  const printData = (dataArrray) => {
+    let historyTitle = "Weather history";
+    let placeString =
+      getCurrentPlace() !== undefined ? " in: " + getCurrentPlace() : "";
+    let typeString =
+      getCurrentType() !== undefined ? " for: " + getCurrentType() : "";
+    let dateString =
+      getCurrentDateInterval() !== undefined
+        ? " from: " +
+          getCurrentDateInterval().from() +
+          " to: " +
+          getCurrentDateInterval().to()
+        : "";
+
+    console.log(historyTitle + placeString + typeString + dateString);
+    dataArrray.map((x) =>
+      console.log(
+        x.getPlace() +
+          " " +
+          x.getType() +
+          " " +
+          x.getUnit() +
+          " " +
+          x.getValue(),
+        "\n"
+      )
     );
+  };
 
   return {
+    data,
     getCurrentType,
     setCurrentType,
     clearCurrentType,
@@ -96,92 +143,105 @@ const WeatherHistory = (options) => {
 
 let wh = WeatherHistory({
   data: [],
-  place: "Brasov",
+  place: "Aarhus",
   type: DataType.TEMPERATURE,
   dateInterval: DateInterval({
-    startDate: new Date(20, 10, 24),
-    endDate: new Date(20, 11, 24),
+    startDate: new Date(2010, 10, 24),
+    endDate: new Date(2021, 11, 24),
   }),
 });
-console.log(wh.getCurrentPlace());
-wh.setCurrentPlace("Brasov 4ever");
-console.log(wh.getCurrentPlace());
-wh.clearCurrentPlace();
-console.log(wh.getCurrentPlace());
+// console.log(wh.getCurrentPlace());
+// wh.setCurrentPlace("Brasov 4ever");
+// console.log(wh.getCurrentPlace());
+// wh.clearCurrentPlace();
+// console.log(wh.getCurrentPlace());
 
-console.log(wh.getCurrentType());
-wh.setCurrentType(DataType.WIND);
-console.log(wh.getCurrentType());
-wh.clearCurrentType();
-console.log(wh.getCurrentType());
-debugger;
-let di = wh.getCurrentDateInterval();
-console.log(
-  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
-);
+// console.log(wh.getCurrentType());
+// wh.setCurrentType(DataType.WIND);
+// console.log(wh.getCurrentType());
+// wh.clearCurrentType();
+// console.log(wh.getCurrentType());
+// debugger;
+// let di = wh.getCurrentDateInterval();
+// console.log(
+//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
+// );
 
-console.log(
-  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
-);
-wh.setCurrentDateInterval(
-  DateInterval({
-    startDate: new Date(2020, 10, 24),
-    endDate: new Date(2020, 11, 24),
-  })
-);
-console.log(
-  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
-);
+// console.log(
+//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
+// );
+// wh.setCurrentDateInterval(
+//   DateInterval({
+//     startDate: new Date(2020, 10, 24),
+//     endDate: new Date(2020, 11, 24),
+//   })
+// );
+// console.log(
+//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
+// );
 
-console.log(
-  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
-);
-wh.clearCurrentDateInterval();
-console.log(
-  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
-);
+// console.log(
+//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
+// );
+// wh.clearCurrentDateInterval();
+// console.log(
+//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
+// );
 
-console.log(
-  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
-);
+// console.log(
+//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
+// );
 
-// let temp = Temperature({
-//   unit: TemperatureUnits.CELSIUS,
-//   value: 0,
-//   time: new Date(2022, 12, 23),
-//   place: "Aarhus",
-//   type: DataType.TEMPERATURE,
-// });
-// let prec = Precipitation({
-//   unit: LengthUnits.MM,
-//   value: 10,
-//   time: new Date(2022, 12, 23),
-//   place: "Aarhus",
-//   type: DataType.PRECIPITATION,
-//   precipitationType: PrecipitationTypes.SNOW,
-// });
-// let wind = Wind({
-//   unit: SpeedUnits.MPH,
-//   value: 10,
-//   time: new Date(2022, 12, 23),
-//   place: "Aarhus",
-//   type: DataType.WIND,
-//   direction: CardinalDirections.SE,
-// });
-// let clouds = CloudCoverage({
-//   unit: "Percentage",
-//   value: 10,
-//   time: new Date(2022, 12, 23),
-//   place: "Aarhus",
-//   type: DataType.CLOUDCOVERAGE,
-// });
-// wh.add(temp);
-// wh.add(prec);
-// wh.add(clouds);
-// wh.add(wind);
+let temp = Temperature({
+  unit: TemperatureUnits.CELSIUS,
+  value: 0,
+  time: new Date(2014, 12, 23),
+  place: "Aarhus",
+  type: DataType.TEMPERATURE,
+});
+let prec = Precipitation({
+  unit: LengthUnits.MM,
+  value: 10,
+  time: new Date(2014, 12, 23),
+  place: "Aarhus",
+  type: DataType.PRECIPITATION,
+  precipitationType: PrecipitationTypes.SNOW,
+});
+let wind = Wind({
+  unit: SpeedUnits.MPH,
+  value: 10,
+  time: new Date(2022, 12, 23),
+  place: "Aarhus",
+  type: DataType.WIND,
+  direction: CardinalDirections.SE,
+});
+let clouds = CloudCoverage({
+  unit: "Percentage",
+  value: 10,
+  time: new Date(2022, 12, 23),
+  place: "Aarhus",
+  type: DataType.CLOUDCOVERAGE,
+});
+wh.add(temp);
+wh.add(prec);
+wh.add(clouds);
+wh.add(wind);
 // console.log(wh.printData());
 // wh.convertToUsUnits();
 // console.log(wh.printData());
 
 // wh.convertToInternationalUnits();
 // console.log(wh.printData());
+debugger;
+// console.log(wh.data());
+wh.printData(wh.data());
+wh.setCurrentType(DataType.PRECIPITATION);
+wh.printData(wh.data());
+wh.clearCurrentType();
+wh.printData(wh.data());
+wh.clearCurrentPlace();
+wh.printData(wh.data());
+wh.clearCurrentDateInterval();
+wh.printData(wh.data());
+wh.convertToUsUnits();
+wh.printData(wh.data());
