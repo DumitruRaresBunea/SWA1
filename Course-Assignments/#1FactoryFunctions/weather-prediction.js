@@ -1,8 +1,7 @@
 import Event from "./event.js";
 import WeatherData from "./weather-data.js";
+import DataTypes from "./data-type.js"
 
-import TemperaturePrediction from "./temperature-prediction.js";
-import Temperature from "./temperature.js"
 import {
   TemperatureUnits,
   PrecipitationTypes,
@@ -26,29 +25,9 @@ const WeatherPrediction = (options) => {
     fromValue,
     toValue,
     ...Event(options),
-    ...WeatherDataTypes(options),
+    ...DataTypes(options),
     ...WeatherData(options),
   };
 };
 
 export default WeatherPrediction;
-
-let temp = TemperaturePrediction({
-  value: 0,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
-  unit: TemperatureUnits.CELSIUS,
-  
-});
-
-let temp1 = Temperature({
-  value: 0,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
-  unit: TemperatureUnits.CELSIUS,
-  
-});
-
-console.log(temp.matches(temp1));
