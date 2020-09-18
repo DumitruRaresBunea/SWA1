@@ -1,22 +1,8 @@
-import { LengthUnits, PrecipitationTypes } from "./enums.js";
-import WeatherData from "./weather-data.js";
+import { LengthUnits } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
-
-const mmToInch = (value) => value / 25.5;
-const inchToMm = (value) => value * 25.5;
+import { mmToInch, inchToMM } from "./helpers/unit-converter.helper.js";
 
 const PrecipitationPrediction = (options) => {
-  // const matches = (data) => {
-  //   if (options.data == data) {
-  //     console.log(
-  //       "Precipitation Prediction matches with actual Precipitations"
-  //     );
-  //   } else {
-  //     console.log(
-  //       "Precipitation Prediction does not match with actual Precipitations"
-  //     );
-  //   }
-  // };
   const getPrecipitaionType = () => options.precipitationType;
 
   const setPrecipitationType = (newPrecipitationtype) =>
@@ -36,7 +22,7 @@ const PrecipitationPrediction = (options) => {
   const convertToMM = () => {
     if (options.unit === LengthUnits.INCHES) {
       options.unit = LengthUnits.MM;
-      options.value = inchToMm(options.value);
+      options.value = inchToMM(options.value);
     } else if (options.unit === LengthUnits.MM) {
       console.log("\u001b[1;31m Already in MM");
     } else {
@@ -49,7 +35,6 @@ const PrecipitationPrediction = (options) => {
     setPrecipitationType,
     convertToInches,
     convertToMM,
-    // ...WeatherData(options),
     ...WeatherPrediction(options),
   };
 };

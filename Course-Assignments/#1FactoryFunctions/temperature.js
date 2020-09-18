@@ -1,14 +1,15 @@
 import WeatherData from "./weather-data.js";
 import { TemperatureUnits } from "./enums.js";
-
-const CtoF = (celsiusT) => (celsiusT / 5) * 9 + 32;
-const FtoC = (farenheitT) => ((farenheitT - 32) * 5) / 9;
+import {
+  farenheitToCelsius,
+  celsiusToFarenheit,
+} from "./helpers/unit-converter.helper.js";
 
 const Temperature = (options) => {
   const convertToF = () => {
     if (options.unit === TemperatureUnits.CELSIUS) {
       options.unit = TemperatureUnits.FAHRENHEIT;
-      options.value = CtoF(options.value);
+      options.value = celsiusToFarenheit(options.value);
     } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
       console.log("\u001b[1;31m Already in FAHRENHEIT");
     } else {
@@ -19,7 +20,7 @@ const Temperature = (options) => {
   const convertToC = () => {
     if (options.unit === TemperatureUnits.FAHRENHEIT) {
       options.unit = TemperatureUnits.CELSIUS;
-      options.value = FtoC(options.value);
+      options.value = farenheitToCelsius(options.value);
     } else if (options.unit === TemperatureUnits.CELSIUS) {
       console.log("\u001b[1;31m Already in CELSIUS");
     } else {

@@ -1,8 +1,6 @@
 import { SpeedUnits, CardinalDirections } from "./enums.js";
 import WeatherData from "./weather-data.js";
-
-const msToMph = (value) => value * 2.237;
-const mphToMs = (value) => value / 2.237;
+import { msToMph, mphToMs } from "./helpers/unit-converter.helper.js";
 
 const Wind = (options) => {
   const getDirection = () => options.direction;
