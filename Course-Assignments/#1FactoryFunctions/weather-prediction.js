@@ -1,15 +1,23 @@
 import Event from "./event.js";
-import DataType from "./data-type.js";
 import WeatherData from "./weather-data.js";
 
+import TemperaturePrediction from "./temperature-prediction.js";
+import Temperature from "./temperature.js"
+import {
+  TemperatureUnits,
+  PrecipitationTypes,
+  CardinalDirections,
+  LengthUnits,
+  SpeedUnits,
+  DataType,
+} from "./enums.js";
+
+
 const WeatherPrediction = (options) => {
-  const matches = (actualValue) => {
-    if (options.value == actualValue) {
-      console.log("Wind Prediction matches with actual Wind");
-    } else {
-      console.log("Wind Prediction does NOT match with actual Wind");
-    }
-  };
+  const matches = (weatherData) =>
+    options.value === weatherData.getValue() &&
+    options.type === weatherData.getType() &&
+    options.unit === weatherData.getUnit();
   const fromValue = () => options.value;
   const toValue = () => options.value;
 
@@ -24,3 +32,23 @@ const WeatherPrediction = (options) => {
 };
 
 export default WeatherPrediction;
+
+let temp = TemperaturePrediction({
+  value: 0,
+  time: new Date(2014, 12, 23),
+  place: "Aarhus",
+  type: DataType.TEMPERATURE,
+  unit: TemperatureUnits.CELSIUS,
+  
+});
+
+let temp1 = Temperature({
+  value: 0,
+  time: new Date(2014, 12, 23),
+  place: "Aarhus",
+  type: DataType.TEMPERATURE,
+  unit: TemperatureUnits.CELSIUS,
+  
+});
+
+console.log(temp.matches(temp1));
