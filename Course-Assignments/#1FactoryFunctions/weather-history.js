@@ -26,8 +26,7 @@ const WeatherHistory = (options) => {
 
   const clearCurrentType = () => (options.type = undefined);
 
-  const getCurrentDateInterval = () =>
-    options.dateInterval && options.dateInterval;
+  const getCurrentDateInterval = () => options.dateInterval;
 
   const setCurrentDateInterval = (newCurrentDateInterval) =>
     (options.dateInterval = newCurrentDateInterval);
@@ -115,20 +114,37 @@ wh.setCurrentType(DataType.WIND);
 console.log(wh.getCurrentType());
 wh.clearCurrentType();
 console.log(wh.getCurrentType());
+debugger;
+let di = wh.getCurrentDateInterval();
+console.log(
+  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
+);
 
-console.log(wh.getCurrentDateInterval().from());
-console.log(wh.getCurrentDateInterval().to());
+console.log(
+  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
+);
 wh.setCurrentDateInterval(
   DateInterval({
     startDate: new Date(2020, 10, 24),
     endDate: new Date(2020, 11, 24),
   })
 );
-console.log(wh.getCurrentDateInterval().from());
-console.log(wh.getCurrentDateInterval().to());
+console.log(
+  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
+);
+
+console.log(
+  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
+);
 wh.clearCurrentDateInterval();
-console.log(wh.getCurrentDateInterval().from());
-console.log(wh.getCurrentDateInterval().to());
+console.log(
+  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
+);
+
+console.log(
+  wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
+);
+
 // let temp = Temperature({
 //   unit: TemperatureUnits.CELSIUS,
 //   value: 0,
