@@ -6,9 +6,9 @@ class CWeatherData extends CEventDataType {
     this.value = value;
   }
 
-  setValue(newValue) {
-    this.value = newValue;
-  }
+//   setValue(newValue) {
+//     this.value = newValue;
+//   }
 
   getValue() {
     return this.value;
