@@ -9,7 +9,7 @@ import {
   CardinalDirections,
   LengthUnits,
   SpeedUnits,
-  DataType,
+  WeatherDataTypes,
 } from "./enums.js";
 
 const WeatherHistory = (options) => {
@@ -36,15 +36,15 @@ const WeatherHistory = (options) => {
   const convertToUsUnits = () => {
     options.data.forEach((x) => {
       switch (x.getType()) {
-        case DataType.TEMPERATURE:
+        case WeatherDataTypes.TEMPERATURE:
           x.convertToF();
           break;
-        case DataType.CLOUDCOVERAGE:
+        case WeatherDataTypes.CLOUDCOVERAGE:
           break;
-        case DataType.WIND:
+        case WeatherDataTypes.WIND:
           x.convertToMPH();
           break;
-        case DataType.PRECIPITATION:
+        case WeatherDataTypes.PRECIPITATION:
           x.convertToInches();
           break;
       }
@@ -54,15 +54,15 @@ const WeatherHistory = (options) => {
   const convertToInternationalUnits = () => {
     options.data.forEach((x) => {
       switch (x.getType()) {
-        case DataType.TEMPERATURE:
+        case WeatherDataTypes.TEMPERATURE:
           x.convertToC();
           break;
-        case DataType.CLOUDCOVERAGE:
+        case WeatherDataTypes.CLOUDCOVERAGE:
           break;
-        case DataType.WIND:
+        case WeatherDataTypes.WIND:
           x.convertToMS();
           break;
-        case DataType.PRECIPITATION:
+        case WeatherDataTypes.PRECIPITATION:
           x.convertToMM();
           break;
       }
@@ -145,7 +145,7 @@ const WeatherHistory = (options) => {
 let wh = WeatherHistory({
   data: [],
   place: "Aarhus",
-  type: DataType.TEMPERATURE,
+  type: WeatherDataTypes.TEMPERATURE,
   dateInterval: DateInterval({
     startDate: new Date(2010, 10, 24),
     endDate: new Date(2021, 11, 24),
@@ -158,7 +158,7 @@ let wh = WeatherHistory({
 // console.log(wh.getCurrentPlace());
 
 // console.log(wh.getCurrentType());
-// wh.setCurrentType(DataType.WIND);
+// wh.setCurrentType(WeatherDataTypes.WIND);
 // console.log(wh.getCurrentType());
 // wh.clearCurrentType();
 // console.log(wh.getCurrentType());
@@ -198,14 +198,14 @@ let temp = Temperature({
   value: 0,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
-  type: DataType.TEMPERATURE,
+  type: WeatherDataTypes.TEMPERATURE,
 });
 let prec = Precipitation({
   unit: LengthUnits.MM,
   value: 10,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
-  type: DataType.PRECIPITATION,
+  type: WeatherDataTypes.PRECIPITATION,
   precipitationType: PrecipitationTypes.SNOW,
 });
 let wind = Wind({
@@ -213,7 +213,7 @@ let wind = Wind({
   value: 10,
   time: new Date(2022, 12, 23),
   place: "Aarhus",
-  type: DataType.WIND,
+  type: WeatherDataTypes.WIND,
   direction: CardinalDirections.SE,
 });
 let clouds = CloudCoverage({
@@ -221,7 +221,7 @@ let clouds = CloudCoverage({
   value: 10,
   time: new Date(2022, 12, 23),
   place: "Aarhus",
-  type: DataType.CLOUDCOVERAGE,
+  type: WeatherDataTypes.CLOUDCOVERAGE,
 });
 wh.add(temp);
 wh.add(prec);
@@ -236,7 +236,7 @@ wh.add(wind);
 debugger;
 // console.log(wh.data());
 wh.printData(wh.data());
-wh.setCurrentType(DataType.PRECIPITATION);
+wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
 wh.printData(wh.data());
 wh.clearCurrentType();
 wh.printData(wh.data());
