@@ -7,34 +7,34 @@ const mphToMs = (value) => value / 2.237;
 
 const WindPrediction = (options) => {
   // const matches = (data) => {
-    //   if (options.data == data) {
+  //   if (options.data == data) {
   //     console.log("Wind Prediction matches with actual Wind");
   //   } else {
-    //     console.log("Wind Prediction does NOT match with actual Wind");
+  //     console.log("Wind Prediction does NOT match with actual Wind");
   //   }
   // };
   const getDirection = () => options.direction;
   const setDirection = (newDirection) => (options.direction = newDirection);
-  
+
   const convertToMPH = () => {
     if (options.unit === SpeedUnits.MS) {
       options.unit = SpeedUnits.MPH;
       options.value = msToMph(options.value);
     } else if (options.unit === SpeedUnits.MPH) {
-      console.log("Already in MPH");
+      console.log("\u001b[1;31m Already in MPH");
     } else {
-      console.log("Not a supported speed unit");
+      console.log("\u001b[1;31m Not a supported speed unit");
     }
   };
-  
+
   const convertToMS = () => {
     if (options.unit === SpeedUnits.MPH) {
       options.unit = SpeedUnits.MS;
       options.value = mphToMs(options.value);
     } else if (options.unit === SpeedUnits.MS) {
-      console.log("Already in MS");
+      console.log("\u001b[1;31m Already in MS");
     } else {
-      console.log("Not a supported speed unit");
+      console.log("\u001b[1;31m Not a supported speed unit");
     }
   };
   return {
@@ -43,7 +43,7 @@ const WindPrediction = (options) => {
     convertToMPH,
     convertToMS,
     // ...WeatherData(options),
-    ...WeatherPrediction(options)
+    ...WeatherPrediction(options),
   };
 };
 
