@@ -34,21 +34,21 @@ const WeatherPrediction = (options) => {
 
 export default WeatherPrediction;
 
-let temp = Temperature({
-  value: 0,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
-  unit: TemperatureUnits.CELSIUS,
-});
+// let temp = Temperature({
+//   value: 0,
+//   time: new Date(2014, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.TEMPERATURE,
+//   unit: TemperatureUnits.CELSIUS,
+// });
 
-let temp1 = TemperaturePrediction({
-  fromValue: -1,
-  toValue: 2,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.PRECIPITATION,
-  unit: TemperatureUnits.CELSIUS,
-});
+// let temp1 = TemperaturePrediction({
+//   fromValue: -1,
+//   toValue: 2,
+//   time: new Date(2014, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.PRECIPITATION,
+//   unit: TemperatureUnits.CELSIUS,
+// });
 
-console.log(temp1.matches(temp));
+// console.log(temp1.matches(temp));
