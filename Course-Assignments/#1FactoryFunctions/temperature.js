@@ -1,9 +1,10 @@
 import WeatherData from "./weather-data.js";
-import { TemperatureUnits } from "./enums.js";
+import { TemperatureUnits, Colors } from "./enums.js";
 import {
   farenheitToCelsius,
   celsiusToFarenheit,
 } from "../helpers/unit-converter.helper.js";
+import { styledLog } from "../helpers/colored-logs.helper.js";
 
 const Temperature = (options) => {
   const convertToF = () => {
@@ -11,9 +12,9 @@ const Temperature = (options) => {
       options.unit = TemperatureUnits.FAHRENHEIT;
       options.value = celsiusToFarenheit(options.value);
     } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
-      console.log("\u001b[1;31m Already in FAHRENHEIT");
+      styledLog(Colors.RED, "Already in FAHRENHEIT");
     } else {
-      console.log("\u001b[1;31m Not a supported temperature unit");
+      styledLog(Colors.RED, "Not a supported temperature unit");
     }
   };
 
@@ -22,9 +23,9 @@ const Temperature = (options) => {
       options.unit = TemperatureUnits.CELSIUS;
       options.value = farenheitToCelsius(options.value);
     } else if (options.unit === TemperatureUnits.CELSIUS) {
-      console.log("\u001b[1;31m Already in CELSIUS");
+      styledLog(Colors.RED, "Already in CELSIUS");
     } else {
-      console.log("\u001b[1;31m Not a supported temperature unit");
+      styledLog(Colors.RED, "Not a supported temperature unit");
     }
   };
 

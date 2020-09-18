@@ -1,1 +1,1 @@
-export const styleLog = (color, text) => console.log(color + text);
+export const styledLog = (color, text) => console.log(color + text);

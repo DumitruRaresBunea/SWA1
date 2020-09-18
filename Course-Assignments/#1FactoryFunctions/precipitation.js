@@ -1,6 +1,6 @@
-import { LengthUnits, PrecipitationTypes } from "./enums.js";
+import { LengthUnits, PrecipitationTypes, Colors } from "./enums.js";
 import WeatherData from "./weather-data.js";
-
+import { styledLog } from "../helpers/colored-logs.helper.js";
 const mmToInch = (value) => value / 25.5;
 const inchToMm = (value) => value * 25.5;
 
@@ -15,9 +15,9 @@ const Precipitation = (options) => {
       options.unit = LengthUnits.INCHES;
       options.value = mmToInch(options.value);
     } else if (options.unit === LengthUnits.INCHES) {
-      console.log("\u001b[1;31m Already in INCHES");
+      styledLog(Colors.RED, "Already in INCHES");
     } else {
-      console.log("\u001b[1;31m Not a supported length unit");
+      styledLog(Colors.RED, "Not a supported length unit");
     }
   };
 
@@ -26,9 +26,9 @@ const Precipitation = (options) => {
       options.unit = LengthUnits.MM;
       options.value = inchToMm(options.value);
     } else if (options.unit === LengthUnits.MM) {
-      console.log("\u001b[1;31m Already in MM");
+      styledLog(Colors.RED, "Already in MM");
     } else {
-      console.log("\u001b[1;31m Not a supported length unit");
+      styledLog(Colors.RED, "Not a supported length unit");
     }
   };
 

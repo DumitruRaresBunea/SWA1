@@ -1,7 +1,4 @@
 const DateInterval = (options) => {
-  // const getStartDate = () => options.startDate;
-  // const getEndDate = () => options.endDate;
-
   const setStartDate = (newStartDate) => (options.startDate = newStartDate);
   const setEndDate = (newEndDate) => (options.endDate = newEndDate);
 

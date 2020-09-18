@@ -10,8 +10,10 @@ import {
   LengthUnits,
   SpeedUnits,
   WeatherDataTypes,
+  Colors,
 } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
+import { styledLog } from "../helpers/colored-logs.helper.js";
 
 const WeatherForecast = (options) => {
   const getCurrentPlace = () => options.place;
@@ -35,7 +37,7 @@ const WeatherForecast = (options) => {
   const clearCurrentDateInterval = () => (options.dateInterval = undefined);
 
   const convertToUsUnits = () => {
-    console.log("\u001b[1;33m Converting to US units");
+    styledLog(Colors.YELLOW, "Converting to US units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -51,11 +53,11 @@ const WeatherForecast = (options) => {
           break;
       }
     });
-    console.log("\u001b[1;33m Converted to US units");
+    styledLog(Colors.YELLOW, "Converted to US units");
   };
 
   const convertToInternationalUnits = () => {
-    console.log("\u001b[1;33m Converting to INTERNATIONAL units");
+    styledLog(Colors.YELLOW, "Converting to INTERNATIONAL units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -71,7 +73,7 @@ const WeatherForecast = (options) => {
           break;
       }
     });
-    console.log("\u001b[1;33m Converted to INTERNATIONAL units");
+    styledLog(Colors.YELLOW, "Converted to INTERNATIONAL units");
   };
 
   const typeCondition = (x) =>
@@ -99,7 +101,7 @@ const WeatherForecast = (options) => {
   const allData = () => options.data;
 
   const printData = (dataArrray) => {
-    let historyTitle = "\u001b[1;36m \n Weather forecast:";
+    let historyTitle = "\nWeather forecast:";
     let placeString =
       getCurrentPlace() !== undefined ? " \n - in: " + getCurrentPlace() : "";
     let typeString =
@@ -112,15 +114,18 @@ const WeatherForecast = (options) => {
           getCurrentDateInterval().to()
         : "";
 
-    console.log(historyTitle + placeString + typeString + dateString);
+    styledLog(Colors.CYAN, historyTitle);
+
+    styledLog(Colors.BLUE, placeString + typeString + dateString);
+
     let placeDetailsString = "";
     let typeDetailsString = "";
 
     dataArrray.map((x) => {
       placeDetailsString = getCurrentPlace() === undefined ? x.getPlace() : "";
       typeDetailsString = getCurrentType() === undefined ? x.getType() : "";
-      console.log(
-        "\u001b[1;32m " +
+      styledLog(
+        Colors.GREEN +
           placeDetailsString +
           " " +
           typeDetailsString +

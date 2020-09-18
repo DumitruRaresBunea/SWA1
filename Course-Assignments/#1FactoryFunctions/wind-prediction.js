@@ -1,6 +1,7 @@
-import { SpeedUnits } from "./enums.js";
+import { SpeedUnits, Colors } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
 import { msToMph, mphToMs } from "../helpers/unit-converter.helper.js";
+import { styledLog } from "../helpers/colored-logs.helper.js";
 
 const WindPrediction = (options) => {
   const getDirection = () => options.direction;
@@ -11,9 +12,9 @@ const WindPrediction = (options) => {
       options.unit = SpeedUnits.MPH;
       options.value = msToMph(options.value);
     } else if (options.unit === SpeedUnits.MPH) {
-      console.log("\u001b[1;31m Already in MPH");
+      styledLog(Colors.RED, "Already in MPH");
     } else {
-      console.log("\u001b[1;31m Not a supported speed unit");
+      styledLog(Colors.RED, "Not a supported speed unit");
     }
   };
 
@@ -22,9 +23,9 @@ const WindPrediction = (options) => {
       options.unit = SpeedUnits.MS;
       options.value = mphToMs(options.value);
     } else if (options.unit === SpeedUnits.MS) {
-      console.log("\u001b[1;31m Already in MS");
+      styledLog(Colors.RED, "Already in MS");
     } else {
-      console.log("\u001b[1;31m Not a supported speed unit");
+      styledLog(Colors.RED, "Not a supported speed unit");
     }
   };
   return {
