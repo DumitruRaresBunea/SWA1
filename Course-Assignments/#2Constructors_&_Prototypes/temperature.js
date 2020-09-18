@@ -1,5 +1,9 @@
 import CWeatherData from "./weather-data.js";
 import { TemperatureUnits, WeatherDataTypes } from "./enums.js";
+import {
+  celsiusToFarenheit,
+  farenheitToCelsius,
+} from "../helpers/unit-converter.helper.js";
 
 class CTemperature extends CWeatherData {
   constructor(type, unit, time, place, value) {
@@ -10,7 +14,7 @@ class CTemperature extends CWeatherData {
 CTemperature.prototype.convertToF = function () {
   if (this.unit === TemperatureUnits.CELSIUS) {
     this.unit = TemperatureUnits.FAHRENHEIT;
-    this.value = (this.value / 5) * 9 + 32;
+    this.value = celsiusToFarenheit(this.value);
   } else if (this.unit === TemperatureUnits.FAHRENHEIT) {
     console.log("\u001b[1;31m Already in FAHRENHEIT");
   } else {
@@ -21,7 +25,7 @@ CTemperature.prototype.convertToF = function () {
 CTemperature.prototype.convertToC = function () {
   if (this.unit === TemperatureUnits.FAHRENHEIT) {
     this.unit = TemperatureUnits.CELSIUS;
-    this.value = ((this.value - 32) * 5) / 9;
+    this.value = farenheitToCelsius(this.value);
   } else if (this.unit === TemperatureUnits.CELSIUS) {
     console.log("\u001b[1;31m Already in CELSIUS");
   } else {
