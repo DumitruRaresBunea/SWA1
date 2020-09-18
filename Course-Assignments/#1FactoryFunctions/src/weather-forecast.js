@@ -1,7 +1,7 @@
-import Temperature from "./temperature.js";
-import CloudCoverage from "./cloud-coverage.js";
-import Wind from "./wind.js";
-import Precipitation from "./precipitation.js";
+import TemperaturePrediction from "./temperature-prediction.js";
+import CloudCoveragePrediction from "./cloud-coverage-prediction.js";
+import WindPrediction from "./wind-prediction.js";
+import PrecipitationPrediction from "./precipitation-prediction.js";
 import DateInterval from "./date-interval.js";
 import {
   TemperatureUnits,
@@ -12,9 +12,10 @@ import {
   WeatherDataTypes,
   Colors,
 } from "./enums.js";
-import { styledLog } from "../helpers/colored-logs.helper.js";
+import WeatherPrediction from "./weather-prediction.js";
+import { styledLog } from "../../helpers/colored-logs.helper.js";
 
-const WeatherHistory = (options) => {
+const WeatherForecast = (options) => {
   const getCurrentPlace = () => options.place;
 
   const setCurrentPlace = (newCurrentPlace) =>
@@ -36,7 +37,7 @@ const WeatherHistory = (options) => {
   const clearCurrentDateInterval = () => (options.dateInterval = undefined);
 
   const convertToUsUnits = () => {
-    styledLog(Colors.YELLOW, "\nConverting to US units");
+    styledLog(Colors.YELLOW, "'nConverting to US units");
     options.data.forEach((x) => {
       switch (x.getType()) {
         case WeatherDataTypes.TEMPERATURE:
@@ -100,7 +101,7 @@ const WeatherHistory = (options) => {
   const allData = () => options.data;
 
   const printData = (dataArrray) => {
-    let historyTitle = "\nWeather history:";
+    let historyTitle = "\nWeather forecast:";
     let placeString =
       getCurrentPlace() !== undefined ? " \n - in: " + getCurrentPlace() : "";
     let typeString =
@@ -119,7 +120,6 @@ const WeatherHistory = (options) => {
 
     let placeDetailsString = "";
     let typeDetailsString = "";
-
     dataArrray.map((x) => {
       placeDetailsString = getCurrentPlace() === undefined ? x.getPlace() : "";
       typeDetailsString = getCurrentType() === undefined ? x.getType() : "";
@@ -130,8 +130,10 @@ const WeatherHistory = (options) => {
           typeDetailsString +
           " " +
           x.getUnit() +
-          " " +
-          x.getValue()
+          " from " +
+          x.fromValue() +
+          " to " +
+          x.toValue()
       );
     });
   };
@@ -155,7 +157,9 @@ const WeatherHistory = (options) => {
   };
 };
 
-let wh = WeatherHistory({
+export default WeatherForecast;
+
+let wh = WeatherForecast({
   data: [],
   place: "Aarhus",
   type: WeatherDataTypes.TEMPERATURE,
@@ -164,74 +168,37 @@ let wh = WeatherHistory({
     endDate: new Date(2021, 11, 24),
   }),
 });
-// console.log(wh.getCurrentPlace());
-// wh.setCurrentPlace("Brasov 4ever");
-// console.log(wh.getCurrentPlace());
-// wh.clearCurrentPlace();
-// console.log(wh.getCurrentPlace());
 
-// console.log(wh.getCurrentType());
-// wh.setCurrentType(WeatherDataTypes.WIND);
-// console.log(wh.getCurrentType());
-// wh.clearCurrentType();
-// console.log(wh.getCurrentType());
-// debugger;
-// let di = wh.getCurrentDateInterval();
-// console.log(
-//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
-// );
-
-// console.log(
-//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
-// );
-// wh.setCurrentDateInterval(
-//   DateInterval({
-//     startDate: new Date(2020, 10, 24),
-//     endDate: new Date(2020, 11, 24),
-//   })
-// );
-// console.log(
-//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
-// );
-
-// console.log(
-//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
-// );
-// wh.clearCurrentDateInterval();
-// console.log(
-//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().from() : undefined
-// );
-
-// console.log(
-//   wh.getCurrentDateInterval() ? wh.getCurrentDateInterval().to() : undefined
-// );
-
-let temp = Temperature({
+let temp = TemperaturePrediction({
   unit: TemperatureUnits.CELSIUS,
-  value: 0,
+  from: -1,
+  to: 2,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.TEMPERATURE,
 });
-let prec = Precipitation({
+let prec = PrecipitationPrediction({
   unit: LengthUnits.MM,
-  value: 10,
+  from: -1,
+  to: 2,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.PRECIPITATION,
   precipitationType: PrecipitationTypes.SNOW,
 });
-let wind = Wind({
+let wind = WindPrediction({
   unit: SpeedUnits.MPH,
-  value: 10,
+  from: 10,
+  to: 20,
   time: new Date(2022, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.WIND,
   direction: CardinalDirections.SE,
 });
-let clouds = CloudCoverage({
+let clouds = CloudCoveragePrediction({
   unit: "Percentage",
-  value: 10,
+  from: -1,
+  to: 10,
   time: new Date(2022, 12, 23),
   place: "Aarhus",
   type: WeatherDataTypes.CLOUDCOVERAGE,
@@ -240,24 +207,21 @@ wh.add(temp);
 wh.add(prec);
 wh.add(clouds);
 wh.add(wind);
-// console.log(wh.printData());
-// wh.convertToUsUnits();
-// console.log(wh.printData());
 
-// wh.convertToInternationalUnits();
-// console.log(wh.printData());
-// console.log(wh.data());
-wh.printData(wh.data());
-wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
-wh.printData(wh.data());
+// wh.printData(wh.data());
+// wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
+// wh.printData(wh.data());
 wh.clearCurrentType();
-wh.printData(wh.data());
+// wh.printData(wh.data());
 wh.clearCurrentPlace();
-wh.printData(wh.data());
+// wh.printData(wh.data());
 wh.clearCurrentDateInterval();
+// wh.printData(wh.data());
+wh.convertToUsUnits();
+// wh.convertToUsUnits();
+wh.convertToInternationalUnits();
 wh.printData(wh.data());
 wh.convertToUsUnits();
 wh.printData(wh.data());
-wh.convertToUsUnits();
-wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
+wh.convertToInternationalUnits();
 wh.printData(wh.data());

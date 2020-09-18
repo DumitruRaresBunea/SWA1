@@ -1,7 +1,7 @@
 import { SpeedUnits, Colors } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
-import { msToMph, mphToMs } from "../helpers/unit-converter.helper.js";
-import { styledLog } from "../helpers/colored-logs.helper.js";
+import { msToMph, mphToMs } from "../../helpers/unit-converter.helper.js";
+import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 const WindPrediction = (options) => {
   const getDirection = () => options.direction;

@@ -1,17 +1,16 @@
+import WeatherData from "./weather-data.js";
 import { TemperatureUnits, Colors } from "./enums.js";
-import WeatherPrediction from "./weather-prediction.js";
 import {
   farenheitToCelsius,
   celsiusToFarenheit,
-} from "../helpers/unit-converter.helper.js";
-import { styledLog } from "../helpers/colored-logs.helper.js";
+} from "../../helpers/unit-converter.helper.js";
+import { styledLog } from "../../helpers/colored-logs.helper.js";
 
-function TemperaturePrediction(options) {
+const Temperature = (options) => {
   const convertToF = () => {
     if (options.unit === TemperatureUnits.CELSIUS) {
       options.unit = TemperatureUnits.FAHRENHEIT;
-      options.from = celsiusToFarenheit(options.from);
-      options.to = celsiusToFarenheit(options.to);
+      options.value = celsiusToFarenheit(options.value);
     } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
       styledLog(Colors.RED, "Already in FAHRENHEIT");
     } else {
@@ -22,8 +21,7 @@ function TemperaturePrediction(options) {
   const convertToC = () => {
     if (options.unit === TemperatureUnits.FAHRENHEIT) {
       options.unit = TemperatureUnits.CELSIUS;
-      options.to = farenheitToCelsius(options.to);
-      options.from = farenheitToCelsius(options.from);
+      options.value = farenheitToCelsius(options.value);
     } else if (options.unit === TemperatureUnits.CELSIUS) {
       styledLog(Colors.RED, "Already in CELSIUS");
     } else {
@@ -31,11 +29,22 @@ function TemperaturePrediction(options) {
     }
   };
 
-  return {
-    convertToF,
-    convertToC,
-    ...WeatherPrediction(options),
-  };
-}
+  return { convertToF, convertToC, ...WeatherData(options) };
+};
 
-export default TemperaturePrediction;
+export default Temperature;
+
+// Verification
+// let temp = Temperature({
+//   unit: TemperatureUnits.CELSIUS,
+//   value: 0,
+//   time: new Date(2022, 12, 23),
+//   place: "Aarhus",
+//   type: "speed",
+// });
+// debugger;
+// temp.convertToC();
+// console.log(temp.getUnit() + " " + temp.getValue());
+// temp.convertToF();
+
+// console.log(temp.getUnit() + " " + temp.getValue());

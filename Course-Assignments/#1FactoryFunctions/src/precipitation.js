@@ -1,8 +1,7 @@
 import { LengthUnits, PrecipitationTypes, Colors } from "./enums.js";
 import WeatherData from "./weather-data.js";
-import { styledLog } from "../helpers/colored-logs.helper.js";
-const mmToInch = (value) => value / 25.5;
-const inchToMm = (value) => value * 25.5;
+import { mmToInch, inchToMM } from "../../helpers/unit-converter.helper.js";
+import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 const Precipitation = (options) => {
   const getPrecipitaionType = () => options.precipitationType;
@@ -24,7 +23,7 @@ const Precipitation = (options) => {
   const convertToMM = () => {
     if (options.unit === LengthUnits.INCHES) {
       options.unit = LengthUnits.MM;
-      options.value = inchToMm(options.value);
+      options.value = inchToMM(options.value);
     } else if (options.unit === LengthUnits.MM) {
       styledLog(Colors.RED, "Already in MM");
     } else {

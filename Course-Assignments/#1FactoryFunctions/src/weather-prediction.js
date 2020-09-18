@@ -14,7 +14,6 @@ import {
   WeatherDataTypes,
   Colors,
 } from "./enums.js";
-import { styledLog } from "../helpers/colored-logs.helper.js";
 
 const WeatherPrediction = (options) => {
   const fromValue = () => options.from;
