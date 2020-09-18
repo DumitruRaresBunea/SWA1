@@ -144,15 +144,15 @@ const WeatherForecast = (options) => {
 
 export default WeatherForecast;
 
-let wh = WeatherForecast({
-  data: [],
-  place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
-  dateInterval: DateInterval({
-    startDate: new Date(2010, 10, 24),
-    endDate: new Date(2021, 11, 24),
-  }),
-});
+// let wh = WeatherForecast({
+//   data: [],
+//   place: "Aarhus",
+//   type: WeatherDataTypes.TEMPERATURE,
+//   dateInterval: DateInterval({
+//     startDate: new Date(2010, 10, 24),
+//     endDate: new Date(2021, 11, 24),
+//   }),
+// });
 // console.log(wh.getCurrentPlace());
 // wh.setCurrentPlace("Brasov 4ever");
 // console.log(wh.getCurrentPlace());
@@ -196,66 +196,66 @@ let wh = WeatherForecast({
 // );
 
 
-let temp = TemperaturePrediction({
-  value: 0,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
-  unit: TemperatureUnits.CELSIUS,
+// let temp = TemperaturePrediction({
+//   value: 0,
+//   time: new Date(2014, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.TEMPERATURE,
+//   unit: TemperatureUnits.CELSIUS,
   
-});
+// });
 
-let temp = TemperaturePrediction({
-  value: 0,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
-  unit: TemperatureUnits.CELSIUS,
+// let temp = TemperaturePrediction({
+//   value: 0,
+//   time: new Date(2014, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.TEMPERATURE,
+//   unit: TemperatureUnits.CELSIUS,
   
-});
-let prec = PrecipitationPrediction({
-  unit: LengthUnits.MM,
-  value: 10,
-  time: new Date(2014, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.PRECIPITATION,
-  precipitationType: PrecipitationTypes.SNOW,
-});
-let wind = WindPrediction({
-  unit: SpeedUnits.MPH,
-  value: 10,
-  time: new Date(2022, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.WIND,
-  direction: CardinalDirections.SE,
-});
-let clouds = CloudCoveragePrediction({
-  unit: "Percentage",
-  value: 10,
-  time: new Date(2022, 12, 23),
-  place: "Aarhus",
-  type: WeatherDataTypes.CLOUDCOVERAGE,
-});
-wh.add(temp);
-wh.add(prec);
-wh.add(clouds);
-wh.add(wind);
-// console.log(wh.printData());
+// });
+// let prec = PrecipitationPrediction({
+//   unit: LengthUnits.MM,
+//   value: 10,
+//   time: new Date(2014, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.PRECIPITATION,
+//   precipitationType: PrecipitationTypes.SNOW,
+// });
+// let wind = WindPrediction({
+//   unit: SpeedUnits.MPH,
+//   value: 10,
+//   time: new Date(2022, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.WIND,
+//   direction: CardinalDirections.SE,
+// });
+// let clouds = CloudCoveragePrediction({
+//   unit: "Percentage",
+//   value: 10,
+//   time: new Date(2022, 12, 23),
+//   place: "Aarhus",
+//   type: WeatherDataTypes.CLOUDCOVERAGE,
+// });
+// wh.add(temp);
+// wh.add(prec);
+// wh.add(clouds);
+// wh.add(wind);
+// // console.log(wh.printData());
+// // wh.convertToUsUnits();
+// // console.log(wh.printData());
+
+// // wh.convertToInternationalUnits();
+// // console.log(wh.printData());
+// debugger;
+// // console.log(wh.data());
+// wh.printData(wh.data());
+// wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
+// wh.printData(wh.data());
+// wh.clearCurrentType();
+// wh.printData(wh.data());
+// wh.clearCurrentPlace();
+// wh.printData(wh.data());
+// wh.clearCurrentDateInterval();
+// wh.printData(wh.data());
 // wh.convertToUsUnits();
-// console.log(wh.printData());
-
-// wh.convertToInternationalUnits();
-// console.log(wh.printData());
-debugger;
-// console.log(wh.data());
-wh.printData(wh.data());
-wh.setCurrentType(WeatherDataTypes.PRECIPITATION);
-wh.printData(wh.data());
-wh.clearCurrentType();
-wh.printData(wh.data());
-wh.clearCurrentPlace();
-wh.printData(wh.data());
-wh.clearCurrentDateInterval();
-wh.printData(wh.data());
-wh.convertToUsUnits();
-wh.printData(wh.data());
+// wh.printData(wh.data());
