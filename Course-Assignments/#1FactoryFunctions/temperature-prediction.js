@@ -1,4 +1,3 @@
-import WeatherData from "./weather-data.js";
 import { TemperatureUnits } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
 
@@ -11,28 +10,28 @@ function TemperaturePrediction(options) {
       options.unit = TemperatureUnits.FAHRENHEIT;
       options.value = CtoF(options.value);
     } else if (options.unit === TemperatureUnits.FAHRENHEIT) {
-      console.log("Already in FAHRENHEIT");
+      console.log("\u001b[1;31m Already in FAHRENHEIT");
     } else {
-      console.log("Not a supported temperature unit");
+      console.log("\u001b[1;31m Not a supported temperature unit");
     }
   };
-  
+
   const convertToC = () => {
     if (options.unit === TemperatureUnits.FAHRENHEIT) {
       options.unit = TemperatureUnits.CELSIUS;
       options.value = FtoC(options.value);
     } else if (options.unit === TemperatureUnits.CELSIUS) {
-      console.log("Already in CELSIUS");
+      console.log("\u001b[1;31m Already in CELSIUS");
     } else {
-      console.log("Not a supported temperature unit");
+      console.log("\u001b[1;31m Not a supported temperature unit");
     }
   };
-  
+
   return {
     convertToF,
     convertToC,
     // ...WeatherData(options),
-    ...WeatherPrediction(options)
+    ...WeatherPrediction(options),
   };
 }
 
