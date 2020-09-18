@@ -31,7 +31,7 @@ function TemperaturePrediction(options) {
   return {
     convertToF,
     convertToC,
-    ...WeatherData(options),
+    // ...WeatherData(options),
     ...WeatherPrediction(options)
   };
 }

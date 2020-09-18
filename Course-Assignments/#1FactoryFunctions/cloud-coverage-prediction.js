@@ -3,7 +3,7 @@ import WeatherPrediction from "./weather-prediction.js";
 
 const CloudCoveragePrediction = (options) => {
   return {
-    ...WeatherData(options),
+    // ...WeatherData(options),
     ...WeatherPrediction(options),
   };
 };
