@@ -3,7 +3,7 @@ import { TemperatureUnits } from "./enums.js";
 import {
   farenheitToCelsius,
   celsiusToFarenheit,
-} from "./helpers/unit-converter.helper.js";
+} from "../helpers/unit-converter.helper.js";
 
 const Temperature = (options) => {
   const convertToF = () => {

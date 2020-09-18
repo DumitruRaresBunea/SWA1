@@ -3,7 +3,7 @@ import WeatherPrediction from "./weather-prediction.js";
 import {
   farenheitToCelsius,
   celsiusToFarenheit,
-} from "./helpers/unit-converter.helper.js";
+} from "../helpers/unit-converter.helper.js";
 
 function TemperaturePrediction(options) {
   const convertToF = () => {

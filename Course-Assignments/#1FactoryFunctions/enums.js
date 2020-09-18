@@ -41,3 +41,12 @@ export const WeatherDataTypes = {
   WIND: "WIND",
   CLOUDCOVERAGE: "CLOUDCOVERAGE",
 };
+
+export const Colors = {
+  RED: "\u001b[1;31m",
+  GREEN: "\u001b[1;32m ",
+  YELLOW: "\u001b[1;33m ",
+  BLUE: "\u001b[1;34m",
+  PURPLE: "\u001b[1;35m ",
+  CYAN: "\u001b[1;35m ",
+};

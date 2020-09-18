@@ -1,6 +1,6 @@
 import { SpeedUnits } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
-import { msToMph, mphToMs } from "./helpers/unit-converter.helper.js";
+import { msToMph, mphToMs } from "../helpers/unit-converter.helper.js";
 
 const WindPrediction = (options) => {
   const getDirection = () => options.direction;

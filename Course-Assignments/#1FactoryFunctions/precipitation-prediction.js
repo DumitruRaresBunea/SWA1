@@ -1,6 +1,6 @@
 import { LengthUnits } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
-import { mmToInch, inchToMM } from "./helpers/unit-converter.helper.js";
+import { mmToInch, inchToMM } from "../helpers/unit-converter.helper.js";
 
 const PrecipitationPrediction = (options) => {
   const getPrecipitaionType = () => options.precipitationType;
