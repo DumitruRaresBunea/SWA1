@@ -9,7 +9,7 @@ import {
   CardinalDirections,
   LengthUnits,
   SpeedUnits,
-  DataType,
+  WeatherDataTypes,
 } from "./enums.js";
 
 
@@ -26,7 +26,7 @@ const WeatherPrediction = (options) => {
     fromValue,
     toValue,
     ...Event(options),
-    ...DataType(options),
+    ...WeatherDataTypes(options),
     ...WeatherData(options),
   };
 };
@@ -37,7 +37,7 @@ let temp = TemperaturePrediction({
   value: 0,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
-  type: DataType.TEMPERATURE,
+  type: WeatherDataTypes.TEMPERATURE,
   unit: TemperatureUnits.CELSIUS,
   
 });
@@ -46,7 +46,7 @@ let temp1 = Temperature({
   value: 0,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
-  type: DataType.TEMPERATURE,
+  type: WeatherDataTypes.TEMPERATURE,
   unit: TemperatureUnits.CELSIUS,
   
 });

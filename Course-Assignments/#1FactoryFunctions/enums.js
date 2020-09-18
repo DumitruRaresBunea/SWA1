@@ -35,7 +35,7 @@ export const CardinalDirections = {
   SV: "SV",
 };
 
-export const DataType = {
+export const WeatherDataTypes = {
   PRECIPITATION: "PRECIPITATION",
   TEMPERATURE: "TEMPERATURE",
   WIND: "WIND",
