@@ -94,7 +94,7 @@ const WeatherHistory = (options) => {
   const allData = () => options.data;
 
   const printData = (dataArrray) => {
-    let historyTitle = "Weather history";
+    let historyTitle = "\u001b[1;36m Weather history";
     let placeString =
       getCurrentPlace() !== undefined ? " in: " + getCurrentPlace() : "";
     let typeString =
@@ -110,7 +110,8 @@ const WeatherHistory = (options) => {
     console.log(historyTitle + placeString + typeString + dateString);
     dataArrray.map((x) =>
       console.log(
-        x.getPlace() +
+        "\u001b[1;32m " +
+          x.getPlace() +
           " " +
           x.getType() +
           " " +

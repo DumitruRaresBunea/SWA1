@@ -13,9 +13,9 @@ const Wind = (options) => {
       options.unit = SpeedUnits.MPH;
       options.value = msToMph(options.value);
     } else if (options.unit === SpeedUnits.MPH) {
-      console.log("Already in MPH");
+      console.log("\u001b[1;31m Already in MPH");
     } else {
-      console.log("Not a supported speed unit");
+      console.log("\u001b[1;31m Not a supported speed unit");
     }
   };
 
