@@ -4,8 +4,8 @@ import { mphToMs, msToMph } from "../helpers/unit-converter.helper.js";
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 class CWind extends CWeatherData {
-  constructor(type, unit, time, place, value, direction) {
-    super(type, unit, time, place, value);
+  constructor(unit, time, place, value, direction) {
+    super(WeatherDataTypes.WIND, unit, time, place, value);
     this.direction = direction;
   }
 }

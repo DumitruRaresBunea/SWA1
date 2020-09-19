@@ -7,9 +7,9 @@ import CWeatherPrediction from "./weather-prediction.js";
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 class CTemperaturePrediction extends CWeatherPrediction {
-  constructor(type, unit, time, place, from, to) {
-    super(type, unit, time, place, from, to);
-  }
+    constructor(unit, time, place, from, to){
+        super(WeatherDataTypes.TEMPERATURE, unit, time, place, from, to);
+    }
 }
 
 CTemperaturePrediction.prototype.convertToF = function () {

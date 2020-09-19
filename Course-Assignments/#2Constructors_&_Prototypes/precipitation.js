@@ -4,8 +4,8 @@ import { mmToInch, inchToMM } from "../helpers/unit-converter.helper.js";
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 class CPrecipitation extends CWeatherData {
-  constructor(type, unit, time, place, value, precipitationType) {
-    super(type, unit, time, place, value);
+  constructor(unit, time, place, value, precipitationType) {
+    super(WeatherDataTypes.PRECIPITATION, unit, time, place, value);
     this.precipitationType = precipitationType;
   }
   getPrecipitationType() {
