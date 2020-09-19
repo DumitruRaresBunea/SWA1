@@ -1,4 +1,4 @@
-import { TemperatureUnits, Colors } from "./enums.js";
+import { TemperatureUnits, Colors, WeatherDataTypes } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
 import {
   farenheitToCelsius,
@@ -7,6 +7,8 @@ import {
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 function TemperaturePrediction(options) {
+  options.type = WeatherDataTypes.TEMPERATURE;
+
   const convertToF = () => {
     if (options.unit === TemperatureUnits.CELSIUS) {
       options.unit = TemperatureUnits.FAHRENHEIT;

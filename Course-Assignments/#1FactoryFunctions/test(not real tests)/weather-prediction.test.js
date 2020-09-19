@@ -6,7 +6,6 @@ let temp = Temperature({
   value: 0,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
-  type: WeatherDataTypes.TEMPERATURE,
   unit: TemperatureUnits.CELSIUS,
 });
 
@@ -15,7 +14,6 @@ let temp1 = TemperaturePrediction({
   toValue: 2,
   time: new Date(2014, 12, 23),
   place: "Aarhus",
-  type: WeatherDataTypes.PRECIPITATION,
   unit: TemperatureUnits.CELSIUS,
 });
 

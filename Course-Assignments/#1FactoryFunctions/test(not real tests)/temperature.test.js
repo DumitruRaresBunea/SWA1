@@ -9,6 +9,6 @@ let temp = Temperature({
   type: "speed",
 });
 temp.convertToC();
-console.log(temp.getUnit() + " " + temp.getValue());
+console.log(temp.getUnit() + " " + temp.getValue() + " " + temp.getType());
 temp.convertToF();
-console.log(temp.getUnit() + " " + temp.getValue());
+console.log(temp.getUnit() + " " + temp.getValue() + " " + temp.getType());

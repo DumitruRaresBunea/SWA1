@@ -2,19 +2,6 @@ import Event from "./event.js";
 import WeatherData from "./weather-data.js";
 import DataTypes from "./data-type.js";
 
-import TemperaturePrediction from "./temperature-prediction.js";
-import Temperature from "./temperature.js";
-
-import {
-  TemperatureUnits,
-  PrecipitationTypes,
-  CardinalDirections,
-  LengthUnits,
-  SpeedUnits,
-  WeatherDataTypes,
-  Colors,
-} from "./enums.js";
-
 const WeatherPrediction = (options) => {
   const fromValue = () => options.from;
   const toValue = () => options.to;

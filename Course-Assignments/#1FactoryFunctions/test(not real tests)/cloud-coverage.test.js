@@ -8,5 +8,6 @@ let clouds = CloudCoverage({
   place: "Aarhus",
   type: WeatherDataTypes.CLOUDCOVERAGE,
 });
-debugger;
-console.log(clouds.getUnit() + " " + clouds.getValue());
+console.log(
+  clouds.getUnit() + " " + clouds.getValue() + " " + clouds.getType()
+);

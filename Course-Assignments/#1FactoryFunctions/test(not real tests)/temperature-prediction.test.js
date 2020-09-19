@@ -10,6 +10,22 @@ let temp = TemperaturePrediction({
   type: WeatherDataTypes.TEMPERATURE,
 });
 temp.convertToC();
-console.log(temp.getUnit() + " " + temp.fromValue() + " " + temp.toValue());
+console.log(
+  temp.getUnit() +
+    " " +
+    temp.fromValue() +
+    " " +
+    temp.toValue() +
+    " " +
+    temp.getType()
+);
 temp.convertToF();
-console.log(temp.getUnit() + " " + temp.fromValue() + " " + temp.toValue());
+console.log(
+  temp.getUnit() +
+    " " +
+    temp.fromValue() +
+    " " +
+    temp.toValue() +
+    " " +
+    temp.getType()
+);

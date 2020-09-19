@@ -11,16 +11,48 @@ let wind = WindPrediction({
   direction: CardinalDirections.SE,
 });
 
-console.log(wind.getUnit() + " " + wind.fromValue() + " " + wind.toValue());
+console.log(
+  wind.getUnit() +
+    " " +
+    wind.fromValue() +
+    " " +
+    wind.toValue() +
+    " " +
+    wind.getType()
+);
 
 wind.convertToMPH();
-console.log(wind.getUnit() + " " + wind.fromValue() + " " + wind.toValue());
+console.log(
+  wind.getUnit() +
+    " " +
+    wind.fromValue() +
+    " " +
+    wind.toValue() +
+    " " +
+    wind.getType()
+);
 
 wind.convertToMS();
-console.log(wind.getUnit() + " " + wind.fromValue() + " " + wind.toValue());
+console.log(
+  wind.getUnit() +
+    " " +
+    wind.fromValue() +
+    " " +
+    wind.toValue() +
+    " " +
+    wind.getType()
+);
 
 wind.convertToMPH();
-console.log(wind.getUnit() + " " + wind.fromValue() + " " + wind.toValue());
+console.log(
+  wind.getUnit() +
+    " " +
+    wind.fromValue() +
+    " " +
+    wind.toValue() +
+    " " +
+    wind.getType()
+);
 
 wind.setDirection(CardinalDirections.NV);
 console.log(wind.getDirection());

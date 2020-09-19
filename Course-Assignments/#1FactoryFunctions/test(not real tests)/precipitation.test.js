@@ -11,10 +11,12 @@ let prec = Precipitation({
 });
 
 prec.convertToInches();
-console.log(prec.getUnit() + " " + prec.getValue());
-prec.convertToMM();
+console.log(prec.getUnit() + " " + prec.getValue() + " " + prec.getType());
 
-console.log(prec.getUnit() + " " + prec.getValue());
+prec.convertToMM();
+prec;
+console.log(prec.getUnit() + " " + prec.getValue() + " " + prec.getType());
+
 prec.convertToMM();
 
 prec.setPrecipitationType(PrecipitationTypes.RAIN);

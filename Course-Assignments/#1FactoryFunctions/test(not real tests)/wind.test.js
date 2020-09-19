@@ -10,13 +10,13 @@ let wind = Wind({
   direction: CardinalDirections.SE,
 });
 
-console.log(wind.getUnit() + " " + wind.getValue());
+console.log(wind.getUnit() + " " + wind.getValue() + " " + wind.getType());
 
 wind.convertToMS();
-console.log(wind.getUnit() + " " + wind.getValue());
+console.log(wind.getUnit() + " " + wind.getValue() + " " + wind.getType());
 
 wind.convertToMPH();
-console.log(wind.getUnit() + " " + wind.getValue());
+console.log(wind.getUnit() + " " + wind.getValue() + " " + wind.getType());
 
 wind.setDirection(CardinalDirections.NV);
 console.log(wind.getDirection());
