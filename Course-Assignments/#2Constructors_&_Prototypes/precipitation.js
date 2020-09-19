@@ -1,6 +1,7 @@
 import CWeatherData from "./weather-data.js";
-import { PrecipitationTypes, LengthUnits } from "./enums.js";
+import { LengthUnits } from "./enums.js";
 import { mmToInch, inchToMM } from "../helpers/unit-converter.helper.js";
+import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 class CPrecipitation extends CWeatherData {
   constructor(type, unit, time, place, value, precipitationType) {
@@ -17,9 +18,9 @@ CPrecipitation.prototype.convertToInches = function () {
     this.unit = LengthUnits.INCHES;
     this.value = mmToInch(this.value);
   } else if (this.unit === LengthUnits.INCHES) {
-    console.log("\u001b[1;31m Already in INCHES");
+    styledLog(Colors.RED, "Already in INCHES");
   } else {
-    console.log("\u001b[1;31m Not a supported length unit");
+    styledLog(Colors.RED, "Not a supported length unit");
   }
 };
 
@@ -28,9 +29,9 @@ CPrecipitation.prototype.convertToMM = function () {
     this.unit = LengthUnits.MM;
     this.value = inchToMM(this.value);
   } else if (this.unit === LengthUnits.MM) {
-    console.log("\u001b[1;31m Already in MM");
+    styledLog(Colors.RED, "Already in MM");
   } else {
-    console.log("\u001b[1;31m Not a supported length unit");
+    styledLog(Colors.RED, "Not a supported length unit");
   }
 };
 

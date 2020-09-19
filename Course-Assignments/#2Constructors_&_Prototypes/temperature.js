@@ -1,9 +1,10 @@
 import CWeatherData from "./weather-data.js";
-import { TemperatureUnits, WeatherDataTypes } from "./enums.js";
+import { TemperatureUnits } from "./enums.js";
 import {
   celsiusToFarenheit,
   farenheitToCelsius,
 } from "../helpers/unit-converter.helper.js";
+import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 class CTemperature extends CWeatherData {
   constructor(type, unit, time, place, value) {
@@ -16,9 +17,9 @@ CTemperature.prototype.convertToF = function () {
     this.unit = TemperatureUnits.FAHRENHEIT;
     this.value = celsiusToFarenheit(this.value);
   } else if (this.unit === TemperatureUnits.FAHRENHEIT) {
-    console.log("\u001b[1;31m Already in FAHRENHEIT");
+    styledLog(Colors.RED, "Already in FAHRENHEIT");
   } else {
-    console.log("\u001b[1;31m Not a supported temperature unit");
+    styledLog(Colors.RED, "Not a supported temperature unit");
   }
 };
 
@@ -27,9 +28,9 @@ CTemperature.prototype.convertToC = function () {
     this.unit = TemperatureUnits.CELSIUS;
     this.value = farenheitToCelsius(this.value);
   } else if (this.unit === TemperatureUnits.CELSIUS) {
-    console.log("\u001b[1;31m Already in CELSIUS");
+    styledLog(Colors.RED, "Already in CELSIUS");
   } else {
-    console.log("\u001b[1;31m Not a supported temperature unit");
+    styledLog(Colors.RED, "Not a supported temperature unit");
   }
 };
 
