@@ -20,7 +20,7 @@ class CWeatherHistory {
     this.currentPeriod = options.currentPeriod;
   }
 
-  getCurrentPalce() {
+  getCurrentPlace() {
     return this.currentPlace;
   }
   setCurrentPlace(place) {
@@ -98,39 +98,54 @@ CWeatherHistory.prototype.add = function (weatherData) {
 };
 
 CWeatherHistory.prototype.typeCondition = function (x) {
-  this.getCurrentType() ? x.getType() === this.getCurrentType() : true;
+  return this.getCurrentType() ? x.getType() === this.getCurrentType() : true;
+};
+
+CWeatherHistory.prototype.placeCondition = function (x) {
+  return this.getCurrentPlace()
+    ? x.getPlace() === this.getCurrentPlace()
+    : true;
+};
+
+CWeatherHistory.prototype.dateCondition = function (x) {
+  return this.getCurrentPeriod()
+    ? this.getCurrentPeriod().contains(x.getTime())
+    : true;
 };
 
 CWeatherHistory.prototype.getData = function () {
   let returnArray = [];
 
   this.data.map((x) => {
-    this.typeCondition(x) && returnArray.push(x);
+    this.typeCondition(x) &&
+      this.placeCondition(x) &&
+      this.dateCondition(x) &&
+      returnArray.push(x);
   });
   return returnArray;
 };
 
 export default CWeatherHistory;
 
-var t = new CTemperature(
-  WeatherDataTypes.TEMPERATURE,
-  TemperatureUnits.CELSIUS,
-  new Date(2000, 2, 2),
-  "Brasov",
-  10
-);
+// var t = new CTemperature(
+//   WeatherDataTypes.TEMPERATURE,
+//   TemperatureUnits.CELSIUS,
+//   new Date(2000, 2, 2),
+//   "Brasov",
+//   10
+// );
 
-var p = new CPrecipitation(
-  WeatherDataTypes.PRECIPITATION,
-  LengthUnits.MM,
-  new Date(2000, 1, 1),
-  "Chisinau",
-  20
-);
-debugger;
-var wh = new CWeatherHistory({ data: [t, p], currentPlace: "string" });
-console.log(wh);
-wh.convertToUSUnits();
-console.log(wh);
-console.log(wh.getCurrentPalce());
-console.log(wh.getData());
+// var p = new CPrecipitation(
+//   WeatherDataTypes.PRECIPITATION,
+//   LengthUnits.MM,
+//   new Date(2000, 1, 1),
+//   "Chisinau",
+//   20
+// );
+// debugger;
+// var wh = new CWeatherHistory({ data: [t, p], currentPlace: "Brasov" });
+// console.log(wh);
+// wh.convertToUSUnits();
+// console.log(wh);
+// console.log(wh.getCurrentPlace());
+// console.log(wh.getData());
