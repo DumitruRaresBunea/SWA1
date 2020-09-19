@@ -97,19 +97,15 @@ CWeatherHistory.prototype.add = function (weatherData) {
   this.data.push(weatherData);
 };
 
-CWeatherHistory.prototype.conditions = function (x) {
-  getCurrentType() ? x.getType() === getCurrentType() : true;
-  getCurrentPlace() ? x.getPlace() === getCurrentPlace() : true;
-  getCurrentDateInterval()
-    ? getCurrentDateInterval().contains(x.getTime())
-    : true;
+CWeatherHistory.prototype.typeCondition = function (x) {
+  this.getCurrentType() ? x.getType() === this.getCurrentType() : true;
 };
 
-CWeatherHistory.prototype.dataX = function () {
+CWeatherHistory.prototype.getData = function () {
   let returnArray = [];
 
   this.data.map((x) => {
-    this.data.conditions(x) && returnArray.push(x);
+    this.typeCondition(x) && returnArray.push(x);
   });
   return returnArray;
 };
@@ -137,4 +133,4 @@ console.log(wh);
 wh.convertToUSUnits();
 console.log(wh);
 console.log(wh.getCurrentPalce());
-console.log(wh.dataX());
+console.log(wh.getData());
