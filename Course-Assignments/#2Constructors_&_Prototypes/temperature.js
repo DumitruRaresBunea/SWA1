@@ -6,8 +6,8 @@ import {
 } from "../helpers/unit-converter.helper.js";
 
 class CTemperature extends CWeatherData {
-  constructor(type, unit, time, place, value) {
-    super(type, unit, time, place, value);
+  constructor(unit, time, place, value) {
+    super(WeatherDataTypes.TEMPERATURE, unit, time, place, value);
   }
 }
 
@@ -36,7 +36,6 @@ CTemperature.prototype.convertToC = function () {
 export default CTemperature;
 
 // var e = new CTemperature(
-//   WeatherDataTypes.TEMPERATURE,
 //   TemperatureUnits.CELSIUS,
 //   new Date(2000, 2, 2),
 //   "Brasov",

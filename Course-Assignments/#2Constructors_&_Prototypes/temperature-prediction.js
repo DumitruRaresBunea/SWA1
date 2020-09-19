@@ -1,10 +1,10 @@
 import { celsiusToFarenheit, farenheitToCelsius } from "../helpers/unit-converter.helper.js";
-import { TemperatureUnits } from "./enums.js";
+import { TemperatureUnits, WeatherDataTypes } from "./enums.js";
 import CWeatherPrediction from "./weather-prediction.js";
 
 class CTemperaturePrediction extends CWeatherPrediction {
-    constructor(type, unit, time, place, from, to){
-        super(type, unit, time, place, from, to);
+    constructor(unit, time, place, from, to){
+        super(WeatherDataTypes.TEMPERATURE, unit, time, place, from, to);
     }
 }
 

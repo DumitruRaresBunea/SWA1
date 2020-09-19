@@ -3,8 +3,8 @@ import { SpeedUnits, WeatherDataTypes } from "./enums.js";
 import { mphToMs, msToMph } from "../helpers/unit-converter.helper.js";
 
 class CWind extends CWeatherData {
-  constructor(type, unit, time, place, value, direction) {
-    super(type, unit, time, place, value);
+  constructor(unit, time, place, value, direction) {
+    super(WeatherDataTypes.WIND, unit, time, place, value);
     this.direction = direction;
   }
 }
