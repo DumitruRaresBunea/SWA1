@@ -32,3 +32,6 @@ CWeatherPrediction.prototype.matches = function (weatherData) {
     this.getUnit() === weatherData.getUnit()
   );
 };
+
+
+export default CWeatherPrediction;
