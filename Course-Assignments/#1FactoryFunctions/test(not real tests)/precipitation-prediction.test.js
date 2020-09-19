@@ -16,9 +16,27 @@ let prec = PrecipitationPrediction({
 });
 
 prec.convertToInches();
-console.log(prec.getUnit() + " " + prec.fromValue() + " " + prec.toValue());
+console.log(
+  prec.getUnit() +
+    " " +
+    prec.fromValue() +
+    " " +
+    prec.toValue() +
+    " " +
+    prec.getType()
+);
+
 prec.convertToMM();
-console.log(prec.getUnit() + " " + prec.fromValue() + " " + prec.toValue());
+console.log(
+  prec.getUnit() +
+    " " +
+    prec.fromValue() +
+    " " +
+    prec.toValue() +
+    " " +
+    prec.getType()
+);
+
 prec.convertToMM();
 
 prec.setPrecipitationType(PrecipitationTypes.RAIN);

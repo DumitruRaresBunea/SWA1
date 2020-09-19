@@ -1,9 +1,10 @@
-import { LengthUnits, Colors } from "./enums.js";
+import { LengthUnits, Colors, WeatherDataTypes } from "./enums.js";
 import WeatherPrediction from "./weather-prediction.js";
 import { mmToInch, inchToMM } from "../../helpers/unit-converter.helper.js";
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 const PrecipitationPrediction = (options) => {
+  options.type = WeatherDataTypes.PRECIPITATION;
   const getPrecipitaionType = () => options.precipitationType;
 
   const setPrecipitationType = (newPrecipitationtype) =>

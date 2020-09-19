@@ -1,17 +1,4 @@
-import Temperature from "./temperature.js";
-import CloudCoverage from "./cloud-coverage.js";
-import Wind from "./wind.js";
-import Precipitation from "./precipitation.js";
-import DateInterval from "./date-interval.js";
-import {
-  TemperatureUnits,
-  PrecipitationTypes,
-  CardinalDirections,
-  LengthUnits,
-  SpeedUnits,
-  WeatherDataTypes,
-  Colors,
-} from "./enums.js";
+import { WeatherDataTypes, Colors } from "./enums.js";
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 const WeatherHistory = (options) => {

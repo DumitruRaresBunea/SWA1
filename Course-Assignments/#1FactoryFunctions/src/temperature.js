@@ -1,5 +1,5 @@
 import WeatherData from "./weather-data.js";
-import { TemperatureUnits, Colors } from "./enums.js";
+import { TemperatureUnits, Colors, WeatherDataTypes } from "./enums.js";
 import {
   farenheitToCelsius,
   celsiusToFarenheit,
@@ -7,6 +7,8 @@ import {
 import { styledLog } from "../../helpers/colored-logs.helper.js";
 
 const Temperature = (options) => {
+  options.type = WeatherDataTypes.TEMPERATURE;
+
   const convertToF = () => {
     if (options.unit === TemperatureUnits.CELSIUS) {
       options.unit = TemperatureUnits.FAHRENHEIT;
