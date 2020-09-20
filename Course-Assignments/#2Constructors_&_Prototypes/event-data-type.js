@@ -5,18 +5,7 @@ class CEventDataType {
     this.time = time;
     this.place = place;
   }
-  // setType(newType) {
-  //   this.type = newType;
-  // }
-  // setUnit(newUnit) {
-  //   this.unit = newUnit;
-  // }
-  // setTime(newTime) {
-  //   this.time = newTime;
-  // }
-  // setPlace(newPlace) {
-  //   this.place = newPlace;
-  // }
+  s;
   getType() {
     return this.type;
   }

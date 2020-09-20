@@ -1,10 +1,10 @@
 import CWeatherData from "./weather-data.js";
-import { TemperatureUnits } from "./enums.js";
+import { TemperatureUnits, WeatherDataTypes, Colors } from "./enums.js";
 import {
   celsiusToFarenheit,
   farenheitToCelsius,
 } from "../helpers/unit-converter.helper.js";
-import { styledLog } from "../../helpers/colored-logs.helper.js";
+import { styledLog } from "../helpers/colored-logs.helper.js";
 
 class CTemperature extends CWeatherData {
   constructor(unit, time, place, value) {
@@ -35,16 +35,3 @@ CTemperature.prototype.convertToC = function () {
 };
 
 export default CTemperature;
-
-// var e = new CTemperature(
-//   TemperatureUnits.CELSIUS,
-//   new Date(2000, 2, 2),
-//   "Brasov",
-//   10
-// );
-
-// console.log(e);
-// e.convertToF();
-// console.log(e);
-// e.convertToC();
-// console.log(e);

@@ -1,12 +1,7 @@
 import CWeatherPrediction from "./weather-prediction.js";
 import { mphToMs, msToMph } from "../helpers/unit-converter.helper.js";
 import { styledLog } from "../helpers/colored-logs.helper.js";
-import {
-  CardinalDirections,
-  Colors,
-  WeatherDataTypes,
-  SpeedUnits,
-} from "./enums.js";
+import { Colors, WeatherDataTypes, SpeedUnits } from "./enums.js";
 
 class CWindPrediction extends CWeatherPrediction {
   constructor(unit, time, place, from, to, windDirections) {
@@ -47,15 +42,3 @@ CWindPrediction.prototype.convertToMS = function () {
 };
 
 export default CWindPrediction;
-
-let w = new CWindPrediction(SpeedUnits.MPH, Date.now, "Aarhus", 2, 5, [
-  CardinalDirections.NV,
-  CardinalDirections.S,
-]);
-
-// Varification
-// console.log(w);
-// w.convertToMS();
-// console.log(w);
-// w.convertToMPH();
-// console.log(w);

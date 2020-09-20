@@ -1,7 +1,7 @@
 import CWeatherData from "./weather-data.js";
 import { SpeedUnits } from "./enums.js";
 import { mphToMs, msToMph } from "../helpers/unit-converter.helper.js";
-import { styledLog } from "../../helpers/colored-logs.helper.js";
+import { styledLog } from "../helpers/colored-logs.helper.js";
 
 class CWind extends CWeatherData {
   constructor(unit, time, place, value, direction) {

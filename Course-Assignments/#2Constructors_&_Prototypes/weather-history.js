@@ -126,26 +126,3 @@ CWeatherHistory.prototype.getData = function () {
 };
 
 export default CWeatherHistory;
-
-// var t = new CTemperature(
-//   WeatherDataTypes.TEMPERATURE,
-//   TemperatureUnits.CELSIUS,
-//   new Date(2000, 2, 2),
-//   "Brasov",
-//   10
-// );
-
-// var p = new CPrecipitation(
-//   WeatherDataTypes.PRECIPITATION,
-//   LengthUnits.MM,
-//   new Date(2000, 1, 1),
-//   "Chisinau",
-//   20
-// );
-// debugger;
-// var wh = new CWeatherHistory({ data: [t, p], currentPlace: "Brasov" });
-// console.log(wh);
-// wh.convertToUSUnits();
-// console.log(wh);
-// console.log(wh.getCurrentPlace());
-// console.log(wh.getData());

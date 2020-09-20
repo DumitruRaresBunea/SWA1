@@ -1,7 +1,7 @@
 import CWeatherData from "./weather-data.js";
-import { LengthUnits } from "./enums.js";
+import { LengthUnits, WeatherDataTypes, Colors } from "./enums.js";
 import { mmToInch, inchToMM } from "../helpers/unit-converter.helper.js";
-import { styledLog } from "../../helpers/colored-logs.helper.js";
+import { styledLog } from "../helpers/colored-logs.helper.js";
 
 class CPrecipitation extends CWeatherData {
   constructor(unit, time, place, value, precipitationType) {
