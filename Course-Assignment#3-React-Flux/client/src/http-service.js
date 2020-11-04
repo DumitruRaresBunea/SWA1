@@ -16,45 +16,42 @@ async function postData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-export const getData = fetch("http://localhost:8080/data");
-fetchPromiseData.then((response) => {
+export const getData = fetch("http://localhost:8080/data").then((response) => {
   return response.json();
 });
 
 export const getDataForPlace = (place) =>
-  fetch(`http://localhost:8080/data/${place}`);
-fetchPromiseData.then((response) => {
-  return response.json();
-});
+  fetch(`http://localhost:8080/data/${place}`).then((response) => {
+    return response.json();
+  });
 
 export const createData = (data) => {
   return postData("http://localhost:8080/data", data);
 };
 
-export const getForecast = fetch("http://localhost:8080/forecast");
-fetchPromiseData.then((response) => {
-  return response.json();
-});
+export const getForecast = fetch("http://localhost:8080/forecast").then(
+  (response) => {
+    return response.json();
+  }
+);
 
 export const getForecastForPlace = (place) =>
-  fetch(`http://localhost:8080/forecast/${place}`);
-fetchPromiseData.then((response) => {
-  return response.json();
-});
+  fetch(`http://localhost:8080/forecast/${place}`).then((response) => {
+    return response.json();
+  });
 
-export const getWarnings = fetch("http://localhost:8080/warnings");
-fetchPromiseData.then((response) => {
-  return response.json();
-});
+export const getWarnings = fetch("http://localhost:8080/warnings").then(
+  (response) => {
+    return response.json();
+  }
+);
 
-export const getWarning = (id = fetch(`http://localhost:8080/warnings/${id}`));
-fetchPromiseData.then((response) => {
-  return response.json();
-});
+export const getWarning = (id) =>
+  fetch(`http://localhost:8080/warnings/${id}`).then((response) => {
+    return response.json();
+  });
 
-export const getWarningsSinceTme = (time = fetch(
-  `http://localhost:8080/warnings/${time}`
-));
-fetchPromiseData.then((response) => {
-  return response.json();
-});
+export const getWarningsSinceTme = (time) =>
+  fetch(`http://localhost:8080/warnings/${time}`).then((response) => {
+    return response.json();
+  });
