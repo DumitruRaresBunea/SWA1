@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@DumitruRaresBunea 
-DumitruRaresBunea
-/
-SWA1
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-SWA1/Course-Assignment#3-React-Flux/client/src/http-service.js /
-
-drb Fixed errors in http requests
-Latest commit 6b30a31 2 days ago
- History
- 0 contributors
-57 lines (49 sloc)  1.91 KB
-  
 async function postData(url = "", data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
