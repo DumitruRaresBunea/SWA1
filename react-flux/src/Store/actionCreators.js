@@ -1,4 +1,4 @@
-import * as actionTypes from "../Store/actionTypes";
+import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
 const url = "http://localhost:8080/data";

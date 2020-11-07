@@ -1,1 +1,1 @@
-export { fetchData } from "./listActionCreators";
+export { fetchData } from "./actionCreators";
