@@ -16,9 +16,10 @@ async function postData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-export const getData = fetch("http://localhost:8080/data").then((response) => {
-  return response.json();
-});
+export const getData = () =>
+  fetch("http://localhost:8080/data").then((response) => {
+    return response.json();
+  });
 
 export const getDataForPlace = (place) =>
   fetch(`http://localhost:8080/data/${place}`).then((response) => {
@@ -29,11 +30,10 @@ export const createData = (data) => {
   return postData("http://localhost:8080/data", data);
 };
 
-export const getForecast = fetch("http://localhost:8080/forecast").then(
-  (response) => {
+export const getForecast = () =>
+  fetch("http://localhost:8080/forecast").then((response) => {
     return response.json();
-  }
-);
+  });
 
 export const getForecastForPlace = (place) =>
   fetch(`http://localhost:8080/forecast/${place}`).then((response) => {
