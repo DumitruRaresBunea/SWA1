@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, state) => {
   return {
     onFetchData: () => dispatch(actions.fetchData()),
     onFetchDataForPlace: (place) => dispatch(actions.fetchDatForPlace(place)),

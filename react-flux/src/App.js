@@ -9,6 +9,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import Filters from "./containers/filter-container";
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
       </AppBar>
 
       <Container>
-        <Box marginY={12}>
+        <Box paddingY={12}>
+          <Filters />
           <Router>
             <Switch>
               <Route exact path="/data">

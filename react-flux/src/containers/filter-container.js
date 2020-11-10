@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import FiltersComponent from "../components/filters";
 import * as filterActions from "../stores/FilterStore/action-creators";
-import * as actions from "../stores/WeatherDataListStore/index";
 
 const mapStateToProps = (state) => {
   return {
     place: state.filter.place,
     startDate: state.filter.startDate,
     endDate: state.filter.endDate,
+    dataType: state.filter.dataType,
   };
 };
 
@@ -18,6 +18,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(filterActions.changeStartDate(startDate)),
     onChangeEndDate: (endDate) =>
       dispatch(filterActions.changeEndDate(endDate)),
+    onDataTypeChange: (dataType) =>
+      dispatch(filterActions.changeDataType(dataType)),
   };
 };
 

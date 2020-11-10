@@ -17,3 +17,9 @@ export const changeEndDate = (endDate) => {
     endDate: endDate,
   };
 };
+export const changeDataType = (dataType) => {
+  return {
+    type: actionTypes.CHANGE_DATA_TYPE,
+    dataType: dataType,
+  };
+};

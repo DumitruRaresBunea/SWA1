@@ -1,21 +1,38 @@
 import "bootstrap/dist/css/bootstrap.css";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import classes from "./ListData.module.css";
-import { Box, Grid } from "@material-ui/core";
+import {
+  Box,
+  Grid,
+  Paper,
+  TableContainer,
+  TableHead,
+  TableCell,
+  Table,
+  TableRow,
+  TableBody,
+  Typography,
+  Switch,
+} from "@material-ui/core";
 import Filters from "../containers/filter-container";
+import { DataGrid } from "@material-ui/data-grid";
 
 function ListData(props) {
-  // const [startDate, setStartDate] = useState(null);
-  // const [endDate, setEndDate] = useState(null);
-
   const [dispalyedData, setDisplayedData] = useState(props.weatherData || []);
 
+  const columns = [
+    { field: "value", headerName: "Value", width: 130 },
+    { field: "type", headerName: "Type", width: 130 },
+    { field: "unit", headerName: "Unit", width: 130 },
+    { field: "time", headerName: "Time", width: 130 },
+    { field: "place", headerName: "Place", width: 130 },
+  ];
+
   const filterDataOnDate = (data) => {
+    let i = 0;
     let toReturn = data;
-    if (props.startDate === null && props.endDate === null) {
-      return toReturn;
-    } else if (data.length > 0) {
-      debugger;
+
+    if (data.length > 0) {
       if (props.startDate !== null) {
         toReturn = toReturn?.filter(
           (x) => new Date(x.time) >= new Date(props.startDate)
@@ -26,8 +43,11 @@ function ListData(props) {
           (x) => new Date(x.time) <= new Date(props.endDate)
         );
       }
-      return toReturn;
-    } else return toReturn;
+    }
+    toReturn = toReturn.map((x) => {
+      return { id: i++, ...x };
+    });
+    return toReturn;
   };
 
   useEffect(() => {
@@ -40,44 +60,27 @@ function ListData(props) {
     setDisplayedData(filterDataOnDate(props.weatherData));
   }, [props.weatherData, props.startDate, props.endDate]);
 
-  const renderTableData = () => {
-    return dispalyedData.map((data, index) => {
-      const { value, place, unit, type, time } = data; //destructuring
-      return (
-        <tr key={index}>
-          <td>{value}</td>
-          <td>{type}</td>
-          <td>{unit}</td>
-          <td>{time}</td>
-          <td>{place}</td>
-        </tr>
-      );
-    });
-  };
   return (
-    <Box>
-      <Grid container justify="space-between" alignItems="center">
-        <Grid item>
-          <h1>Latest measured data</h1>
-        </Grid>
-        <Grid item>
-          <Filters />
-        </Grid>
-      </Grid>
-
-      <table className={classes.table}>
-        <thead className={classes.TableHeadColor}>
-          <tr>
-            <th scope="col">Value</th>
-            <th scope="col">Type</th>
-            <th scope="col">Unit</th>
-            <th scope="col">Time</th>
-            <th scope="col">Place</th>
-          </tr>
-        </thead>
-        <tbody>{renderTableData()}</tbody>
-      </table>
-    </Box>
+    <Fragment>
+      <Box
+        padding={5}
+        margin={5}
+        bgcolor="white"
+        borderRadius={15}
+        boxShadow={5}
+      >
+        <div
+          style={{
+            height: 540,
+            width: "100%",
+            alignItems: "center",
+            justifyItems: "center",
+          }}
+        >
+          <DataGrid pageSize={8} columns={columns} rows={dispalyedData} />
+        </div>
+      </Box>
+    </Fragment>
   );
 }
 

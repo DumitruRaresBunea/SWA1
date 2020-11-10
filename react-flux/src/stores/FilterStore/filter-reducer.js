@@ -4,6 +4,7 @@ const initialState = {
   place: "None",
   startDate: null,
   endDate: null,
+  dataType: "Forecast",
 };
 
 const filter = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const filter = (state = initialState, action) => {
       return {
         ...state,
         endDate: action.endDate,
+      };
+    case actionTypes.CHANGE_DATA_TYPE:
+      return {
+        ...state,
+        dataType: action.dataType,
       };
     default:
       return state;
