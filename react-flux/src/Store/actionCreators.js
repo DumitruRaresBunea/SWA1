@@ -23,6 +23,13 @@ export const fetchDataStart = () => {
   };
 };
 
+export const changePlace = (place) => {
+  return {
+    type: actionTypes.CHANGE_PLACE,
+    place: place,
+  };
+};
+
 export const fetchData = () => {
   return (dispatch) => {
     axios
@@ -33,12 +40,35 @@ export const fetchData = () => {
         const weatherData = [];
         for (let key in res.data) {
           weatherData.push({
-            ...res.data[key]
+            ...res.data[key],
           });
         }
         dispatch(fetchDataSuccess(weatherData));
         console.log("weather data");
-        console.log( weatherData );
+        console.log(weatherData);
+      })
+      .catch((err) => {
+        dispatch(fetchDataFail(err));
+      });
+  };
+};
+
+export const fetchDatForPlace = (place) => {
+  return (dispatch) => {
+    axios
+      .get(url + "/" + place)
+      .then((res) => {
+        console.log("result");
+        console.log(res.data);
+        const weatherData = [];
+        for (let key in res.data) {
+          weatherData.push({
+            ...res.data[key],
+          });
+        }
+        dispatch(fetchDataSuccess(weatherData));
+        console.log("weather data");
+        console.log(weatherData);
       })
       .catch((err) => {
         dispatch(fetchDataFail(err));

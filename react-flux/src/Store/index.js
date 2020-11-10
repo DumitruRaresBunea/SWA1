@@ -1,1 +1,1 @@
-export { fetchData } from "./actionCreators";
+export * from "./actionCreators";

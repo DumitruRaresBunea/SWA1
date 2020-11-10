@@ -2,8 +2,9 @@ import { Switch } from "react-router-dom";
 import * as actionTypes from "./actionTypes";
 
 const initialState = {
-    weatherData: [],
-    loading: false
+  weatherData: [],
+  loading: false,
+  place: "None",
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,19 +12,30 @@ const reducer = (state = initialState, action) => {
     case actionTypes.GET_DATA_START:
       return {
         ...state,
-        loading: true, 
+        loading: true,
       };
     case actionTypes.GET_DATA_SUCCESS:
       return {
         ...state,
         weatherData: action.weatherData,
-        loading:false
+        loading: false,
       };
-      case actionTypes.GET_DATA_FAIL:
-          return{
-              ...state,
-              loading:false
-          }
+    case actionTypes.GET_DATA_FAIL:
+      return {
+        ...state,
+        loading: false,
+      };
+    case actionTypes.GET_DATA_FOR_PLACE_SUCCESS:
+      return {
+        ...state,
+        weatherData: action.weatherData,
+        loading: false,
+      };
+    case actionTypes.CHANGE_PLACE:
+      return {
+        ...state,
+        place: action.place,
+      };
     default:
       return state;
   }
