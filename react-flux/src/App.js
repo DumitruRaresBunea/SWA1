@@ -39,11 +39,15 @@ function App() {
         <Box marginY={12}>
           <Router>
             <Switch>
-              <Route path="/data">
+              <Route exact path="/data">
                 <ListData />
               </Route>
-              <Route path="">
+              <Route exact path="/">
                 <Redirect to="/data" />
+              </Route>
+              <Route>
+                <h1>Not found</h1>
+                <a href="/">Go home</a>
               </Route>
             </Switch>
           </Router>

@@ -1,29 +1,29 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useEffect, useState } from "react";
 import classes from "./ListData.module.css";
-import { Box, Select, Grid, InputLabel } from "@material-ui/core";
-import DateRangePicker from "../components/date-range-picker";
+import { Box, Grid } from "@material-ui/core";
+import Filters from "../containers/filter-container";
 
 function ListData(props) {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  // const [startDate, setStartDate] = useState(null);
+  // const [endDate, setEndDate] = useState(null);
 
   const [dispalyedData, setDisplayedData] = useState(props.weatherData || []);
 
   const filterDataOnDate = (data) => {
     let toReturn = data;
-    if (startDate === null && endDate === null) {
+    if (props.startDate === null && props.endDate === null) {
       return toReturn;
     } else if (data.length > 0) {
       debugger;
-      if (startDate !== null) {
+      if (props.startDate !== null) {
         toReturn = toReturn?.filter(
-          (x) => new Date(x.time) >= new Date(startDate)
+          (x) => new Date(x.time) >= new Date(props.startDate)
         );
       }
-      if (endDate !== null) {
+      if (props.endDate !== null) {
         toReturn = toReturn?.filter(
-          (x) => new Date(x.time) <= new Date(endDate)
+          (x) => new Date(x.time) <= new Date(props.endDate)
         );
       }
       return toReturn;
@@ -38,7 +38,7 @@ function ListData(props) {
 
   useEffect(() => {
     setDisplayedData(filterDataOnDate(props.weatherData));
-  }, [props.weatherData, startDate, endDate]);
+  }, [props.weatherData, props.startDate, props.endDate]);
 
   const renderTableData = () => {
     return dispalyedData.map((data, index) => {
@@ -55,38 +55,13 @@ function ListData(props) {
     });
   };
   return (
-    // <div className="col-sm-6 col-md-6 col-lg-6">
     <Box>
       <Grid container justify="space-between" alignItems="center">
         <Grid item>
           <h1>Latest measured data</h1>
         </Grid>
         <Grid item>
-          <Grid container justify="space-between" spacing={1}>
-            <Grid item>
-              <InputLabel>Place</InputLabel>
-              <Select
-                label="Place"
-                native
-                value={props.place}
-                placeholder="Monkey"
-                onChange={(event) => {
-                  props.onPlaceChange(event.target.value);
-                }}
-              >
-                <option value="None">None</option>
-                <option value="Aarhus">Aarhus</option>
-                <option value="Copenhagen">Copenhagen</option>
-                <option value="Horsens">Horsens</option>
-              </Select>
-            </Grid>
-            <DateRangePicker
-              startDate={startDate}
-              endDate={endDate}
-              setStartDate={setStartDate}
-              setEndDate={setEndDate}
-            />
-          </Grid>
+          <Filters />
         </Grid>
       </Grid>
 

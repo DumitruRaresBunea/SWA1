@@ -14,6 +14,7 @@ const DateRangePicker = (props) => {
           clearable
           value={props.startDate}
           onChange={props.setStartDate}
+          maxDate={props.endDate}
         />
       </Grid>
       <Grid item>
@@ -23,6 +24,7 @@ const DateRangePicker = (props) => {
           clearable
           value={props.endDate}
           onChange={props.setEndDate}
+          minDate={props.startDate}
         />
       </Grid>
     </MuiPickersUtilsProvider>

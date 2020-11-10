@@ -7,7 +7,9 @@ const mapStateToProps = (state) => {
   return {
     weatherData: state.weatherDataList.weatherData,
     loading: state.weatherDataList.loading,
-    place: state.weatherDataList.place,
+    place: state.filter.place,
+    startDate: state.filter.startDate,
+    endDate: state.filter.endDate,
   };
 };
 
