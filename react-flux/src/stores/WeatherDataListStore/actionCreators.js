@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
-const url = "http://localhost:8080/data";
+const url = "http://localhost:8080/";
 
 export const fetchDataSuccess = (weatherData) => {
   return {
@@ -30,10 +30,11 @@ export const changePlace = (place) => {
   };
 };
 
-export const fetchData = () => {
+export const fetchData = (dataType) => {
+  let actualUrl = `${url}${dataType === "History" ? "data" : "forecast"}`;
   return (dispatch) => {
     axios
-      .get(url)
+      .get(actualUrl)
       .then((res) => {
         console.log("result");
         console.log(res.data);
@@ -53,10 +54,14 @@ export const fetchData = () => {
   };
 };
 
-export const fetchDatForPlace = (place) => {
+export const fetchDatForPlace = (place, dataType) => {
+  let actualUrl = `${url}${
+    dataType === "History" ? "data" : "forecast"
+  }/${place}`;
+
   return (dispatch) => {
     axios
-      .get(url + "/" + place)
+      .get(actualUrl)
       .then((res) => {
         console.log("result");
         console.log(res.data);
