@@ -1,4 +1,3 @@
-import { Switch } from "react-router-dom";
 import * as actionTypes from "./actionTypes";
 
 const initialState = {
@@ -7,7 +6,7 @@ const initialState = {
   place: "None",
 };
 
-const reducer = (state = initialState, action) => {
+const weatherDataList = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_DATA_START:
       return {
@@ -41,4 +40,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default weatherDataList;

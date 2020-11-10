@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import * as actions from "../Store/index";
+import * as actions from "../WeatherDataListStore/index";
 import classes from "./ListData.module.css";
 import { Box, Select, Grid, InputLabel } from "@material-ui/core";
 import DateRangePicker from "../components/date-range-picker";
@@ -110,9 +110,9 @@ function ListData(props) {
 
 const mapStateToProps = (state) => {
   return {
-    weatherData: state.weatherData,
-    loading: state.loading,
-    place: state.place,
+    weatherData: state.weatherDataList.weatherData,
+    loading: state.weatherDataList.loading,
+    place: state.weatherDataList.place,
   };
 };
 
