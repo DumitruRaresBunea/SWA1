@@ -1,7 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import * as actions from "../WeatherDataListStore/index";
 import classes from "./ListData.module.css";
 import { Box, Select, Grid, InputLabel } from "@material-ui/core";
 import DateRangePicker from "../components/date-range-picker";
@@ -108,20 +106,4 @@ function ListData(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    weatherData: state.weatherDataList.weatherData,
-    loading: state.weatherDataList.loading,
-    place: state.weatherDataList.place,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFetchData: () => dispatch(actions.fetchData()),
-    onFetchDataForPlace: (place) => dispatch(actions.fetchDatForPlace(place)),
-    onPlaceChange: (place) => dispatch(actions.changePlace(place)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListData);
+export default ListData;

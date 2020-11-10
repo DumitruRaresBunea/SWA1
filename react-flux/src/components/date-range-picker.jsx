@@ -11,7 +11,6 @@ const DateRangePicker = (props) => {
         <InputLabel>Start date</InputLabel>
         <DatePicker
           autoOk
-          // label="Start date"
           clearable
           value={props.startDate}
           onChange={props.setStartDate}
@@ -21,7 +20,6 @@ const DateRangePicker = (props) => {
         <InputLabel>End date</InputLabel>
         <DatePicker
           autoOk
-          // label="End date"
           clearable
           value={props.endDate}
           onChange={props.setEndDate}

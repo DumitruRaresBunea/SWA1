@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import weatherDataList from "./WeatherDataListStore/weather-data-list-reducer";
+import weatherDataList from "./stores/WeatherDataListStore/weather-data-list-reducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
