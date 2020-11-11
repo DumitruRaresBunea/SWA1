@@ -17,6 +17,12 @@ export const changeEndDate = (endDate) => {
     endDate: endDate,
   };
 };
+
+export const resetFilters = () => {
+  return {
+    type: actionTypes.RESET_FILTERS,
+  };
+};
 export const changeDataType = (dataType) => {
   return {
     type: actionTypes.CHANGE_DATA_TYPE,

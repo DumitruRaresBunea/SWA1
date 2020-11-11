@@ -5,3 +5,5 @@ export const GET_DATA_FAIL = "GET_DATA_FAIL";
 export const GET_DATA_FOR_PLACE = "GET_DATA_FOR_PLACE";
 export const GET_DATA_FOR_PLACE_SUCCESS = "GET_DATA_FOR_PLACE_SUCCESS";
 export const CHANGE_PLACE = "CHANGE_PLACE";
+
+export const RESET = "RESET";

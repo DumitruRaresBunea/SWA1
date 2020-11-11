@@ -2,7 +2,7 @@ import * as actionTypes from "./actionTypes";
 
 const initialState = {
   weatherData: [],
-  loading: false,
+  loading: true,
   place: "None",
 };
 
@@ -23,6 +23,11 @@ const weatherDataList = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case actionTypes.RESET:
+      return {
+        ...initialState,
+        loading: true,
       };
     case actionTypes.GET_DATA_FOR_PLACE_SUCCESS:
       return {

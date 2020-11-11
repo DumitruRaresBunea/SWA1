@@ -14,7 +14,11 @@ const filter = (state = initialState, action) => {
         ...state,
         place: action.place,
       };
-
+    case actionTypes.RESET_FILTERS:
+      return {
+        ...initialState,
+        // place: action.place,
+      };
     case actionTypes.CHANGE_START_DATE:
       return {
         ...state,
@@ -27,7 +31,7 @@ const filter = (state = initialState, action) => {
       };
     case actionTypes.CHANGE_DATA_TYPE:
       return {
-        ...state,
+        ...initialState,
         dataType: action.dataType,
       };
     default:

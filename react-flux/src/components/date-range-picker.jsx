@@ -1,6 +1,5 @@
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import React from "react";
-import { useState } from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import { InputLabel, Grid } from "@material-ui/core";
 
@@ -14,7 +13,7 @@ const DateRangePicker = (props) => {
           clearable
           value={props.startDate}
           onChange={props.setStartDate}
-          maxDate={props.endDate}
+          minDate={props.dataType === "Forecast" ? new Date() : null}
         />
       </Grid>
       <Grid item>
@@ -24,7 +23,7 @@ const DateRangePicker = (props) => {
           clearable
           value={props.endDate}
           onChange={props.setEndDate}
-          minDate={props.startDate}
+          maxDate={props.dataType === "History" ? new Date() : null}
         />
       </Grid>
     </MuiPickersUtilsProvider>

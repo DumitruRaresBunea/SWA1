@@ -17,6 +17,12 @@ export const fetchDataFail = (error) => {
   };
 };
 
+export const reset = () => {
+  return {
+    type: actionTypes.RESET,
+  };
+};
+
 export const fetchDataStart = () => {
   return {
     type: actionTypes.GET_DATA_START,

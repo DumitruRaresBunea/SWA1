@@ -37,8 +37,6 @@ const createHistoricalData = (state = initialState, action) => {
           ...state.form,
           dataType: action.dataType,
           unit: getUnitForType(action.dataType),
-          wind_direction: null,
-          precipitation_type: null,
         },
       };
     case actionTypes.CHANGE_FORM_PLACE:

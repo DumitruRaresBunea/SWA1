@@ -7,8 +7,10 @@ import {
   Box,
   Switch,
   Typography,
+  Fab,
 } from "@material-ui/core";
 import DateRangePicker from "../components/date-range-picker";
+import { Refresh } from "@material-ui/icons";
 
 const FiltersComponent = (props) => {
   let handleDataTypeSwitchChange = () => {
@@ -21,21 +23,7 @@ const FiltersComponent = (props) => {
         <Grid item xs={1}>
           <h1>{props.dataType}</h1>
         </Grid>
-        <Grid item>
-          <Typography component="div">
-            <Grid component="label" container alignItems="center" spacing={1}>
-              <Grid item>History</Grid>
-              <Grid item>
-                <Switch
-                  checked={props.dataType === "Forecast"}
-                  onClick={handleDataTypeSwitchChange}
-                  name="checkedC"
-                />
-              </Grid>
-              <Grid item>Forecast</Grid>
-            </Grid>
-          </Typography>
-        </Grid>
+
         <Grid item>
           <Grid container justify="space-between" spacing={1}>
             <Grid item>
@@ -59,9 +47,31 @@ const FiltersComponent = (props) => {
               endDate={props.endDate}
               setStartDate={props.onChangeStartDate}
               setEndDate={props.onChangeEndDate}
-              // data
+              dataType={props.dataType}
             />
           </Grid>
+        </Grid>
+      </Grid>
+      <Grid container justify="space-between">
+        <Grid item>
+          <Typography component="div">
+            <Grid component="label" container alignItems="center" spacing={1}>
+              <Grid item>History</Grid>
+              <Grid item>
+                <Switch
+                  checked={props.dataType === "Forecast"}
+                  onClick={handleDataTypeSwitchChange}
+                  name="checkedC"
+                />
+              </Grid>
+              <Grid item>Forecast</Grid>
+            </Grid>
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Fab size="small" onClick={() => props.onResetFilters()}>
+            <Refresh />
+          </Fab>
         </Grid>
       </Grid>
     </Box>

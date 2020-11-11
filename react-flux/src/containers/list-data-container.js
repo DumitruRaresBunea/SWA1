@@ -6,11 +6,11 @@ import ListData from "../components/list-data";
 const mapStateToProps = (state) => {
   return {
     weatherData: state.weatherDataList.weatherData,
-    loading: state.weatherDataList.loading,
     place: state.filter.place,
     startDate: state.filter.startDate,
     endDate: state.filter.endDate,
     dataType: state.filter.dataType,
+    loading: state.weatherDataList.loading,
   };
 };
 
@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     onFetchDataForPlace: (place, dataType) =>
       dispatch(actions.fetchDatForPlace(place, dataType)),
     onPlaceChange: (place) => dispatch(actions.changePlace(place)),
+    reset: () => dispatch(actions.reset()),
   };
 };
 

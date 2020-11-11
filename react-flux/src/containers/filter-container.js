@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(filterActions.changeEndDate(endDate)),
     onDataTypeChange: (dataType) =>
       dispatch(filterActions.changeDataType(dataType)),
+    onResetFilters: () => dispatch(filterActions.resetFilters()),
   };
 };
 

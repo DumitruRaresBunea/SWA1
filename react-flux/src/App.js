@@ -9,7 +9,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import Filters from "./containers/filter-container";
 import CreateHisotricalData from "./containers/create-historical-data-container";
 
 function App() {
@@ -26,6 +25,7 @@ function App() {
           <Grid container spacing={0} alignContent="center">
             <Grid item xs={1}>
               <img
+                alt=""
                 src={sunImage}
                 style={{ height: 50 + "px", width: 20 + "50" }}
               />
@@ -39,23 +39,21 @@ function App() {
 
       <Container>
         <Box paddingY={12}>
-          <Router>
-            <Switch>
-              <Route exact path="/data">
-                <ListData />
-              </Route>
-              <Route exact path="/create">
-                <CreateHisotricalData />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/data" />
-              </Route>
-              <Route>
-                <h1>Not found</h1>
-                <a href="/">Go home</a>
-              </Route>
-            </Switch>
-          </Router>
+          <Switch>
+            <Route exact path="/data">
+              <ListData />
+            </Route>
+            <Route exact path="/create">
+              <CreateHisotricalData />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/data" />
+            </Route>
+            <Route>
+              <h1>Not found</h1>
+              <a href="/">Go home</a>
+            </Route>
+          </Switch>
         </Box>
       </Container>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
