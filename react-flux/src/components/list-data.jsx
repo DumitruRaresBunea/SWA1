@@ -2,10 +2,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import React, { useEffect, useState } from "react";
 import { Box, Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
+import Filters from "../containers/filter-container";
 
 function ListData(props) {
   const [dispalyedData, setDisplayedData] = useState(props.weatherData || []);
   const [columns, setColumns] = useState([]);
+
+  const [refresh, setRefresh] = useState(false);
 
   const valueCol = { field: "value", headerName: "Value", width: 130 };
   const fromCol = { field: "from", headerName: "Minimum value", width: 140 };
@@ -76,7 +79,7 @@ function ListData(props) {
       ? props.onFetchData(props.dataType)
       : props.onFetchDataForPlace(props.place, props.dataType);
     setColumns(columnsChange());
-  }, [props.place, props.dataType]);
+  }, [props.place, props.dataType, refresh]);
 
   useEffect(() => {
     setDisplayedData(filterDataOnDate(props.weatherData));
@@ -84,18 +87,28 @@ function ListData(props) {
   }, [props.weatherData, props.startDate, props.endDate, props.dataType]);
 
   return (
-    <Box padding={5} margin={5} bgcolor="white" borderRadius={15} boxShadow={5}>
-      <div
-        style={{
-          height: 540,
-          width: "100%",
-          alignItems: "center",
-          justifyItems: "center",
-        }}
+    <>
+      <Filters />
+      <Box
+        padding={5}
+        margin={5}
+        bgcolor="white"
+        borderRadius={15}
+        boxShadow={5}
       >
-        <DataGrid pageSize={8} columns={columns} rows={dispalyedData || []} />
-      </div>
-    </Box>
+        <div
+          style={{
+            height: 540,
+            width: "100%",
+            alignItems: "center",
+            justifyItems: "center",
+          }}
+        >
+          <Button onClick={() => setRefresh(!refresh)}>Refresh</Button>
+          <DataGrid pageSize={8} columns={columns} rows={dispalyedData || []} />
+        </div>
+      </Box>
+    </>
   );
 }
 
