@@ -7,8 +7,8 @@ h4 {
   position: relative;
 }
 
-h2 {
-  font-size: 2.25em;
+h2,h3 {
+  font-size: 1.70em;
   font-weight: bold;
 }
 
@@ -47,22 +47,9 @@ tr:nth-child(even) {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
-.brand {
-  height: 25px;
-}
-
-.navbar .nav {
-  font-family: "Open Sans", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.2rem;
-}
 
 .navbar-inverse {
   background-color: #0caadc;
-}
-
-.navbar-inverse {
   border-color: #0caadc;
 }
 
@@ -71,18 +58,11 @@ tr:nth-child(even) {
 }
 
 .navbar-inverse .navbar-brand:hover {
-  color: white;
+  color: gold;
 }
 
 .table-head-color {
   background-color: #0caadc !important;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
-html,
-body {
-  background-color: #f3f3f3;
-  font-family: "Roboto", sans-serif;
 }
 
 .card {
@@ -94,4 +74,29 @@ body {
   border-radius: 3px;
   background-color: #fff;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid #0caadc;
+  width: 25%;
+  padding: 10px 10px 10px 0;
+  margin-right: 15px;
+}
+button {
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 2px solid #494949 !important;
+  /* display: inline-block; */
+  transition: all 0.4s ease 0s;
+}
+
+button:hover {
+  color: #ffffff !important;
+  background: #f6b93b;
+  border-color: #f6b93b !important;
+  transition: all 0.4s ease 0s;
 }
