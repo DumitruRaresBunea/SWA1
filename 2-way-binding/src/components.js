@@ -1,4 +1,12 @@
 import model from "./model.js";
+import {
+  averageSpeed,
+  clouds,
+  direction,
+  maxTemp,
+  minTemp,
+  totalPre,
+} from "./cardValues.js";
 
 //$scope is used as the source for 2-way data binding, can be targeted from the index
 const module = angular.module("WeatherApp", []);
@@ -18,10 +26,25 @@ module.controller("WeatherController", function ($scope, $http) {
     .then(({ data: data }) => {
       $http.get("http://localhost:8080/forecast").then(({ data: forecast }) => {
         //create model with data and forecast returned from requests
-        aModel = model(data, forecast);
+        aModel = model(
+          data,
+          forecast,
+          minTemp(data),
+          maxTemp(data),
+          totalPre(data),
+          averageSpeed(data),
+          direction(data),
+          clouds(data)
+        );
         //add them to the scope to update index.html
         $scope.data = aModel.weatherData();
         $scope.forecast = aModel.forecastData();
+        $scope.minT = aModel.minTemperature();
+        $scope.maxT = aModel.maxTemperature();
+        $scope.totalP = aModel.totalPrecipitation();
+        $scope.averageW = aModel.averageWindSpeed();
+        $scope.dominantW = aModel.dominantDirection();
+        $scope.averageC = aModel.averageCoverage();
         $scope.result = "Submitted successfuly " + $scope.data.length;
       });
     })
@@ -66,6 +89,22 @@ module.controller("WeatherController", function ($scope, $http) {
             $scope.data = aModel.weatherData();
             $scope.forecast = aModel.forecastData();
           });
+      })
+      .catch(console.err);
+  };
+
+  //minTemperature
+  $scope.last5DaysData = () => {
+    //get the dates from index.html
+    $http
+      .get("http://localhost:8080/data")
+      .then(({ data: data }) => {
+        const lowestTemp = functions().lowestTemperatureValue(
+          functions().getDataForLastNDaysForType(data, 5, "temperature")
+        );
+        aModel = model(0, 0, lowestTemp);
+        $scope.averageVal = aModel.averageValues();
+        console.log($scope.averageVal);
       })
       .catch(console.err);
   };
