@@ -8,7 +8,7 @@ import {
   totalPre,
 } from "./cardValues.js";
 
-//$scope is used as the source for 2-way data binding, can be targeted from the index
+//$scope is used as the source for 2-way data binding, can be targeted from the index.html
 const module = angular.module("WeatherApp", []);
 module.controller("WeatherController", function ($scope, $http) {
   let aModel;
@@ -25,7 +25,7 @@ module.controller("WeatherController", function ($scope, $http) {
     .get("http://localhost:8080/data")
     .then(({ data: data }) => {
       $http.get("http://localhost:8080/forecast").then(({ data: forecast }) => {
-        //create model with data and forecast returned from requests
+        //create model with data and forecast returned from requests,a s well as cards values
         aModel = model(
           data,
           forecast,
@@ -45,7 +45,7 @@ module.controller("WeatherController", function ($scope, $http) {
         $scope.averageW = aModel.averageWindSpeed();
         $scope.dominantW = aModel.dominantDirection();
         $scope.averageC = aModel.averageCoverage();
-        $scope.result = "Submitted successfuly " + $scope.data.length;
+        $scope.result = "Submitted successfuly ";
       });
     })
     .catch(console.err);
@@ -93,23 +93,7 @@ module.controller("WeatherController", function ($scope, $http) {
       .catch(console.err);
   };
 
-  //minTemperature
-  $scope.last5DaysData = () => {
-    //get the dates from index.html
-    $http
-      .get("http://localhost:8080/data")
-      .then(({ data: data }) => {
-        const lowestTemp = functions().lowestTemperatureValue(
-          functions().getDataForLastNDaysForType(data, 5, "temperature")
-        );
-        aModel = model(0, 0, lowestTemp);
-        $scope.averageVal = aModel.averageValues();
-        console.log($scope.averageVal);
-      })
-      .catch(console.err);
-  };
-
-  //scope function to add a new object to the historical array and post it to the server
+  //add data
   $scope.addHistoricalData = () => {
     let weatherObject = {};
     //precipitation
@@ -144,12 +128,12 @@ module.controller("WeatherController", function ($scope, $http) {
         unit: $scope.unit,
       };
     }
-    //create a json object for the weather data
+    //create a json object for weather data
     const weatherObjectArray = [weatherObject];
     const jsonObject = JSON.stringify(weatherObjectArray);
     aModel.addWeatherData(weatherObject);
 
-    //post request to send a weather data json object to the server
+    //post data
     const headers = {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -165,14 +149,12 @@ module.controller("WeatherController", function ($scope, $http) {
             $http
               .get("http://localhost:8080/forecast")
               .then(({ data: forecast }) => {
-                //create model with data and forecast returned from requests
                 aModel = model(data, forecast);
-                //empty the current data from the scope in preparation for the new one with the added object
+                //empty the current data from the scope
                 $scope.data = [];
-                //add these to the scope so the index.html can be updated
                 $scope.data = aModel.weatherData();
                 $scope.forecast = aModel.forecastData();
-                $scope.result = "Submitted successfuly " + $scope.data.length;
+                $scope.result = "Submitted successfuly";
               });
           })
           .catch(console.err);

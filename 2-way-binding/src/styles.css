@@ -47,22 +47,9 @@ tr:nth-child(even) {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
-.brand {
-  height: 25px;
-}
-
-.navbar .nav {
-  font-family: "Open Sans", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.2rem;
-}
 
 .navbar-inverse {
   background-color: #0caadc;
-}
-
-.navbar-inverse {
   border-color: #0caadc;
 }
 
@@ -71,18 +58,11 @@ tr:nth-child(even) {
 }
 
 .navbar-inverse .navbar-brand:hover {
-  color: white;
+  color: gold;
 }
 
 .table-head-color {
   background-color: #0caadc !important;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
-html,
-body {
-  background-color: white;
-  font-family: "Roboto", sans-serif;
 }
 
 .card {

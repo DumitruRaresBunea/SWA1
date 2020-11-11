@@ -3,7 +3,7 @@
 
 <head>
   <base href="/">
-  <!--import the angularjs library, bootstrap, styles.css and components.js-->
+  <!--import angularjs library, bootstrap, styles.css and components.js-->
   <script type='module'>
     import "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"
     import './components.js'
@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<!--reference the module.controller('WeatherController') from the components-->
+
+<!--reference the module.controller('WeatherController') from components.js-->
 
 <body ng-controller="WeatherController">
+
   <nav class="navbar navbar-dark primary-color">
     <a class="navbar-brand" href="#">Link</a>
   </nav>
@@ -26,43 +28,47 @@
 
   <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left: 50px;">
     <h3>Report historical data</h3>
-    <!--form created to fill data so a post request can be submitted to the server
-    ng-model is used to bind the value in the select to the same on in the $scope using two way data binding
-    -->
+    <!--ng-model - binds values to $scope using two way data binding-->
     <div style="padding-bottom: 25px;">
-      <!-- <form id="dataForm"> -->
-      <input class="type-3" type="text" name="city" list="citynames" placeholder="Place" ng-model="place">
-      <datalist id="citynames">
-        <option value="Horsens"></option>
-        <option value="Aarhus"></option>
-        <option value="Copenhagen"></option>
-      </datalist>
-      <input type="text" name="type" list="typenames" placeholder="Type" ng-model="type">
-      <datalist id="typenames">
-        <option value="temperature"></option>
-        <option value="precipitation"></option>
-        <option value="wind speed"></option>
-        <option value="cloud coverage"></option>
-      </datalist>
-      <input type="datetime-local" id="historyTime" placeholder="Time" ng-model="time">
+      <!-- value -->
       <input type="number" min="-10" max="100" placeholder="Value" ng-model="value">
-      <input type="text" name="unit" list="unitnames" placeholder="Unit" ng-model="unit">
-      <datalist id="unitnames">
+      <!-- unit -->
+      <input type="text" name="unit" list="units" placeholder="Unit" ng-model="unit">
+      <datalist id="units">
         <option value="C"></option>
         <option value="mm"></option>
         <option value="m/s"></option>
         <option value="%"></option>
       </datalist>
-      <input type="text" name="precipitation" list="precipitationnames" placeholder="Precipitation Type"
+      <!-- type -->
+      <input type="text" name="type" list="types" placeholder="Type" ng-model="type">
+      <datalist id="types">
+        <option value="temperature"></option>
+        <option value="precipitation"></option>
+        <option value="wind speed"></option>
+        <option value="cloud coverage"></option>
+      </datalist>
+      <!-- time -->
+      <input type="datetime-local" id="time" placeholder="Time" ng-model="time">
+      <!-- place -->
+      <input class="type-3" type="text" name="city" list="cities" placeholder="Place" ng-model="place">
+      <datalist id="cities">
+        <option value="Horsens"></option>
+        <option value="Aarhus"></option>
+        <option value="Copenhagen"></option>
+      </datalist>
+      <!-- precipitation types -->
+      <input type="text" name="precipitation" list="precipitationTypes" placeholder="Precipitation Type"
         ng-model="precipitation_type">
-      <datalist id="precipitationnames">
+      <datalist id="precipitationTypes">
         <option value="rain"></option>
         <option value="sleet"></option>
         <option value="hail"></option>
         <option value="snow"></option>
       </datalist>
-      <input type="text" name="direction" list="directionnames" placeholder="Wind direction" ng-model="direction">
-      <datalist id="directionnames">
+      <!-- wind directions -->
+      <input type="text" name="direction" list="directions" placeholder="Wind direction" ng-model="direction">
+      <datalist id="directions">
         <option value="North"></option>
         <option value="Northeast"></option>
         <option value="East"></option>
@@ -74,29 +80,31 @@
       </datalist>
       <br>
       <br>
-      <!-- </form> -->
       <button type="submit" form="dataForm" value="Submit" ng-click='addHistoricalData()'>Submit</button>
       <label style="padding-left: 25px">Message: </label>
-      <input type="text" readonly ng-model="result">
+      <input style="border-bottom: none; color: red;" type="text" readonly ng-model="result">
     </div>
-    <h3>Choose date Interval</h3>
+
+    <h3>Filter weather data by date interval</h3>
     <div style="padding-bottom: 50px;">
       <input type="datetime-local" id="from_date">
       <input type="datetime-local" id="to_date">
-      <!--on button click execute filterInterval method, see component.js-->
+      <!--on button click execute filterInterval-->
       <button ng-click='filterInterval()'>Filter</button>
     </div>
+
     <div class="dropdown" style="padding-bottom: 25px;">
       <button type="button" data-toggle="dropdown">Select City
         <span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <!-- displays data for all cities -->
+        <!-- showData("") - displays data for all cities -->
         <li value="None" ng-click='showData("")'><a href="#">All</a></li>
         <li value="Aarhus" ng-click='showData("Aarhus")'><a href="#">Aarhus</a></li>
         <li value="Copenhagen" ng-click='showData("Copenhagen")'><a href="#">Copenhagen</a></li>
         <li value="Horsens" ng-click='showData("Horsens")'><a href="#">Horsens</a></li>
       </ul>
     </div>
+
     <div class="table-container">
       <h1>Weather Data</h1>
       <table class="table">
@@ -111,7 +119,6 @@
             <th scope="col">Place</th>
           </tr>
         </thead>
-        <!--data available in the $scope is bound to the one in d for each elements of the data array and can be referenced with {{ var }}-->
         <!--ng-repeat - as a for loop displaying relevant fields-->
         <tbody ng-repeat="d in data">
           <tr>
@@ -183,7 +190,9 @@
         </div>
       </div>
     </div>
+
     </br>
+
     <div class="table-container">
       <h1>Wather forecast</h1>
       <table class="table">
@@ -219,6 +228,7 @@
       </table>
     </div>
   </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type='module' src='components.js'></script>
