@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import weatherDataList from "./stores/WeatherDataListStore/weather-data-list-reducer";
 import filter from "./stores/FilterStore/filter-reducer";
+import createHistoricalData from "./stores/CreateHistoricalDataStore/create-historical-date-reducer";
+
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
@@ -15,8 +17,9 @@ const composeEnhancers =
     : compose;
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
+
 const store = createStore(
-  combineReducers({ weatherDataList, filter }),
+  combineReducers({ weatherDataList, filter, createHistoricalData }),
   enhancer
 );
 

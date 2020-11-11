@@ -10,13 +10,15 @@ const mapStateToProps = (state) => {
     place: state.filter.place,
     startDate: state.filter.startDate,
     endDate: state.filter.endDate,
+    dataType: state.filter.dataType,
   };
 };
 
-const mapDispatchToProps = (dispatch, state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchData: () => dispatch(actions.fetchData()),
-    onFetchDataForPlace: (place) => dispatch(actions.fetchDatForPlace(place)),
+    onFetchData: (dataType) => dispatch(actions.fetchData(dataType)),
+    onFetchDataForPlace: (place, dataType) =>
+      dispatch(actions.fetchDatForPlace(place, dataType)),
     onPlaceChange: (place) => dispatch(actions.changePlace(place)),
   };
 };

@@ -10,6 +10,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Filters from "./containers/filter-container";
+import CreateHisotricalData from "./containers/create-historical-data-container";
 
 function App() {
   return (
@@ -38,11 +39,13 @@ function App() {
 
       <Container>
         <Box paddingY={12}>
-          <Filters />
           <Router>
             <Switch>
               <Route exact path="/data">
                 <ListData />
+              </Route>
+              <Route exact path="/create">
+                <CreateHisotricalData />
               </Route>
               <Route exact path="/">
                 <Redirect to="/data" />

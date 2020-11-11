@@ -59,6 +59,7 @@ const FiltersComponent = (props) => {
               endDate={props.endDate}
               setStartDate={props.onChangeStartDate}
               setEndDate={props.onChangeEndDate}
+              // data
             />
           </Grid>
         </Grid>
