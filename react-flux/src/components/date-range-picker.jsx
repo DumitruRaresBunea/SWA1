@@ -14,6 +14,7 @@ const DateRangePicker = (props) => {
           value={props.startDate}
           onChange={props.setStartDate}
           minDate={props.dataType === "Forecast" ? new Date() : null}
+          maxDate={props.dataType === "History" ? new Date() : null}
         />
       </Grid>
       <Grid item>
@@ -23,6 +24,7 @@ const DateRangePicker = (props) => {
           clearable
           value={props.endDate}
           onChange={props.setEndDate}
+          minDate={props.dataType === "Forecast" ? new Date() : null}
           maxDate={props.dataType === "History" ? new Date() : null}
         />
       </Grid>

@@ -1,6 +1,13 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useEffect, useState } from "react";
-import { Box, Button, Fab, Grid } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Fab,
+  Grid,
+  Snackbar,
+  SnackbarContent,
+} from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import Filters from "../containers/filter-container";
 import { Add } from "@material-ui/icons";
@@ -8,6 +15,8 @@ import { Add } from "@material-ui/icons";
 function ListData(props) {
   const [dispalyedData, setDisplayedData] = useState(props.weatherData || []);
   const [columns, setColumns] = useState([]);
+
+  const [openSnackBar, setopenSnackBar] = useState(false);
 
   const valueCol = { field: "value", headerName: "Value", width: 130 };
   const fromCol = { field: "from", headerName: "Minimum value", width: 140 };
@@ -128,13 +137,34 @@ function ListData(props) {
                 columns={columns}
                 rows={dispalyedData || []}
                 autoHeight
-                onError={() => "NO DATA FOR YOU"}
+                onError={() => {
+                  props.resetOnError();
+                  setopenSnackBar(true);
+                }}
                 pagination
               />
             </Box>
           )}
         </div>
       </Box>
+      <Snackbar
+        open={openSnackBar}
+        onClick={() => {
+          setopenSnackBar(false);
+        }}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+      >
+        <SnackbarContent
+          style={{
+            backgroundColor: "red",
+          }}
+          autoHideDuration={3000}
+          message="Error occurred in the data grid. Everything reseted. Click on me to close!"
+        />
+      </Snackbar>
     </>
   );
 }

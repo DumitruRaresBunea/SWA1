@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { connect } from "react-redux";
 import * as actions from "../stores/WeatherDataListStore/index";
+import * as filterActions from "../stores/FilterStore/index";
+
 import ListData from "../components/list-data";
 
 const mapStateToProps = (state) => {
@@ -21,6 +23,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.fetchDatForPlace(place, dataType)),
     onPlaceChange: (place) => dispatch(actions.changePlace(place)),
     reset: () => dispatch(actions.reset()),
+    resetOnError: () => {
+      dispatch(actions.reset());
+      dispatch(filterActions.resetFilters());
+    },
   };
 };
 
