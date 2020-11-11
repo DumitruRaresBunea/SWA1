@@ -45,7 +45,6 @@ module.controller("WeatherController", function ($scope, $http) {
         $scope.averageW = aModel.averageWindSpeed();
         $scope.dominantW = aModel.dominantDirection();
         $scope.averageC = aModel.averageCoverage();
-        $scope.result = "Submitted successfuly ";
       });
     })
     .catch(console.err);
@@ -154,7 +153,7 @@ module.controller("WeatherController", function ($scope, $http) {
                 $scope.data = [];
                 $scope.data = aModel.weatherData();
                 $scope.forecast = aModel.forecastData();
-                $scope.result = "Submitted successfuly";
+                $scope.result = "Submitted successfuly - " + $scope.data.length;
               });
           })
           .catch(console.err);
